@@ -12,7 +12,7 @@ version="${file.jarVersion}"
 displayName="Slime Revolution"
 #updateJSONURL="https://change.me.example.invalid/updates.json"
 displayURL="https://github.com/kpzip/slime_revolution"
-logoFile="" #optional
+logoFile="logo.png"
 
 #credits=""
 authors="Kyle `kpzip` Schmerge and Yegor `yeg_` Tryndin" #optional
