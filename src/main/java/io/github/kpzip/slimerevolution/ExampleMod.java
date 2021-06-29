@@ -1,4 +1,4 @@
-package com.kpzip.slimerevolution;
+package io.github.kpzip.slimerevolution;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
