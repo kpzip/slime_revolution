@@ -1,4 +1,4 @@
-package com.example.examplemod;
+package com.kpzip.slimerevolution;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
