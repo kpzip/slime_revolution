@@ -15,7 +15,7 @@ public class ItemInit {
 			() -> new Item(new Item.Properties()
 						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP)
 					));
-	public static final RegistryObject<Item> SLIMY_IRON = ITEMS.register("slimy_iron",
+	public static final RegistryObject<Item> SLIMY_IRON = ITEMS.register("slimey_iron",
 			() -> new Item(new Item.Properties()
 						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP)
 					));
