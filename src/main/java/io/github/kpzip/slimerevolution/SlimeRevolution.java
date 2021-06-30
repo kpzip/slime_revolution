@@ -52,7 +52,7 @@ public class SlimeRevolution
 
 		@Override
 		public ItemStack makeIcon() {
-			return ItemInit.SLIME_BASED_RUBBER.get().getDefaultInstance();
+			return ItemInit.SLIMEY_IRON.get().getDefaultInstance();
 		}
     }
 }
