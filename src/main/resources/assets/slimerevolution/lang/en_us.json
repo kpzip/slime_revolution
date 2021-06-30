@@ -1,4 +1,6 @@
 {
 	"item.slimerevolution.slime_based_rubber": "Slime Based Rubber",
-	"block.slimerevolution.slime_based_rubber_block": "Slime Based Rubber Block"
+	"block.slimerevolution.slime_based_rubber_block": "Slime Based Rubber Block",
+	
+	"itemGroup.slimerevolutiontab": "Slime Revolution"
 }

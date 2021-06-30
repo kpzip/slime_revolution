@@ -8,6 +8,7 @@ import io.github.kpzip.slimerevolution.core.init.ItemInit;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -23,6 +24,7 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class SlimeRevolution
 {
     public static final Logger LOGGER = LogManager.getLogger();
+    public static final ItemGroup SLIME_REVOLUTION_GROUP = new SlimeRevolutionGroup("slimerevolutiontab");
 
     public SlimeRevolution() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -36,8 +38,23 @@ public class SlimeRevolution
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
     	BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(ItemGroup.TAB_MISC))
+			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(SlimeRevolution.SLIME_REVOLUTION_GROUP))
 					.setRegistryName(block.getRegistryName()));
 		});
+    }
+    
+    public static class SlimeRevolutionGroup extends ItemGroup {
+
+		public SlimeRevolutionGroup(String label) {
+			super(label);
+		}
+
+		@Override
+		public ItemStack makeIcon() {
+			return ItemInit.SLIME_BASED_RUBBER.get().getDefaultInstance();
+		}
+    	
+		@Override
+		public setBackground
     }
 }
