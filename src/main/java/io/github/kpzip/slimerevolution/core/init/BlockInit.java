@@ -17,10 +17,10 @@ public class BlockInit {
 	
 	public static final RegistryObject<BlockHorizontal> SLIME_BASED_RUBBER_BLOCK = BLOCKS.register("slime_based_rubber_block",
 			() -> new BlockHorizontal(AbstractBlock.Properties
-					.of(Material.CAKE, MaterialColor.COLOR_BROWN)
-					.harvestLevel(-1)
-					.instabreak()
-					.sound(SoundType.SLIME_BLOCK)
-					.isRedstoneConductor((state, reader, pos) -> false)
+						.of(Material.CAKE, MaterialColor.COLOR_BROWN)
+						.harvestLevel(-1)
+						.instabreak()
+						.sound(SoundType.SLIME_BLOCK)
+						.isRedstoneConductor((state, reader, pos) -> false)
 					));
 }
