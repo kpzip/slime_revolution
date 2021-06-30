@@ -1,7 +1,8 @@
 {
-	"variants": {
-		"": { 
-			"model": "slimerevolution:block/slime_based_rubber_block" 
-		}
-	}
+    "variants": {
+        "facing=north": { "model": "slimerevolution:block/slime_based_rubber_block" },
+        "facing=south": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 180 },
+        "facing=west":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 270 },
+        "facing=east":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 90 }
+    }
 }
