@@ -71,8 +71,7 @@ public class BlockHorizontal extends Block {
 			buffer[0].forAllBoxes((minX, minY, minZ, maxX, maxY, maxZ) -> buffer[1] = VoxelShapes.or(buffer[1],
 					VoxelShapes.create(new AxisAlignedBB(1 - maxZ, minY, minX, 1 - minZ, maxY, maxX))));
 			buffer[0] = buffer[1];
-			buffer[1] = VoxelShapes.empty();
-			
+			buffer[1] = VoxelShapes.empty();	
 		}
 
 		shapes.put(to, buffer[0]);
