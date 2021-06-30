@@ -1,7 +1,7 @@
 {   
 	"parent": "block/block",
     "textures": {
-        "particle": "slimerevolution:blocks/slime_based_rubber_block",
+        "particle": "slimerevolution:blocks/slime_based_rubber_block_side",
         "texture_top": "slimerevolution:blocks/slime_based_rubber_block_top",
         "texture_side": "slimerevolution:blocks/slime_based_rubber_block_side"
     },
