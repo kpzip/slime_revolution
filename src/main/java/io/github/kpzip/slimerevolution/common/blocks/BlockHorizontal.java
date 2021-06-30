@@ -25,11 +25,20 @@ public class BlockHorizontal extends Block {
 	public static final DirectionProperty HORIZONAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 	
 	protected final Map<Direction, VoxelShape> shapes = new HashMap<Direction, VoxelShape>();
+	
+	public boolean HasCustomShape;
 
-	public BlockHorizontal(Properties property) {
+	public BlockHorizontal(Properties property, VoxelShape shape) {
 		super(property);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONAL_FACING, Direction.NORTH));
 		runCalculation(shape);
+		HasCustomShape = true;
+	}
+	
+	public BlockHorizontal(Properties property) {
+		super(property);
+		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONAL_FACING, Direction.NORTH));
+		HasCustomShape = false;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -73,8 +82,15 @@ public class BlockHorizontal extends Block {
 	    }
 	}
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return shapes.get(state.getValue(HORIZONAL_FACING));
+		if (HasCustomShape) {
+			return shapes.get(state.getValue(HORIZONAL_FACING));
+		}
+		else {
+			return super.getShape(state, reader, pos, context);
+		}
+		
 	}
 }
