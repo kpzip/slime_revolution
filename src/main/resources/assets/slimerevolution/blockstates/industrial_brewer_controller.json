@@ -1,12 +1,12 @@
 {
     "variants": {
-        "facing=north,is_multiblock=true": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 90 },
-        "facing=south,is_multiblock=true": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 270 },
-        "facing=west,is_multiblock=true":  { "model": "slimerevolution:block/slime_based_rubber_block" },
-        "facing=east,is_multiblock=true":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 180 },
-        "facing=north,is_multiblock=false": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 90 },
-        "facing=south,is_multiblock=false": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 270 },
-        "facing=west,is_multiblock=false":  { "model": "slimerevolution:block/slime_based_rubber_block" },
-        "facing=east,is_multiblock=false":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 180 }
+        "facing=north,is_multiblock=true": { "model": "slimerevolution:block/industrial_brewer_controller", "y": 90 },
+        "facing=south,is_multiblock=true": { "model": "slimerevolution:block/industrial_brewer_controller", "y": 270 },
+        "facing=west,is_multiblock=true":  { "model": "slimerevolution:block/industrial_brewer_controller" },
+        "facing=east,is_multiblock=true":  { "model": "slimerevolution:block/industrial_brewer_controller", "y": 180 },
+        "facing=north,is_multiblock=false": { "model": "slimerevolution:block/industrial_brewer_controller", "y": 90 },
+        "facing=south,is_multiblock=false": { "model": "slimerevolution:block/industrial_brewer_controller", "y": 270 },
+        "facing=west,is_multiblock=false":  { "model": "slimerevolution:block/industrial_brewer_controller" },
+        "facing=east,is_multiblock=false":  { "model": "slimerevolution:block/industrial_brewer_controller", "y": 180 }
     }
 }

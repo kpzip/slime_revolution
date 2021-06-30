@@ -1,0 +1,22 @@
+{   
+	"parent": "block/block",
+    "textures": {
+        "particle": "slimerevolution:blocks/industrial_brewer_controller_front",
+        "texture_top": "slimerevolution:blocks/industrial_brewer_controller_top",
+        "texture_side": "slimerevolution:blocks/industrial_brewer_controller_front",
+        "texture_side_2": "slimerevolution:blocks/industrial_brewer_controller_side"
+    },
+    "elements": [
+        {   "from": [ 0, 0, 0 ],
+            "to": [ 16, 16, 16 ],
+            "faces": {
+                "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side2", "cullface": "down" },
+                "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_top", "cullface": "up" },
+                "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side2", "cullface": "north" },
+                "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side2", "cullface": "south" },
+                "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side", "cullface": "west" },
+                "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side_2", "cullface": "east" }
+            }
+        }
+    ]
+}
