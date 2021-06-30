@@ -53,8 +53,5 @@ public class SlimeRevolution
 		public ItemStack makeIcon() {
 			return ItemInit.SLIME_BASED_RUBBER.get().getDefaultInstance();
 		}
-    	
-		@Override
-		public setBackground
     }
 }
