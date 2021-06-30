@@ -33,6 +33,7 @@ public class SlimeRevolution
         BlockInit.BLOCKS.register(bus);
         
         MinecraftForge.EVENT_BUS.register(this);
+        
     }
 
     @SubscribeEvent
