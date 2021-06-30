@@ -17,7 +17,7 @@ public class BlockInit {
 	public static final RegistryObject<Block> SLIME_BASED_RUBBER_BLOCK = BLOCKS.register("slime_based_rubber_block",
 			() -> new Block(AbstractBlock.Properties
 					.of(Material.CAKE, MaterialColor.COLOR_BROWN)
-					.harvestLevel(0)
+					.harvestLevel(-1)
 					.instabreak()
 					.sound(SoundType.SLIME_BLOCK)
 					.isRedstoneConductor((state, reader, pos) -> false)
