@@ -13,7 +13,7 @@ public class BlockInit {
 	
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, ModVars.MOD_ID);
 	
-	public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("slime_based_rubber_block",
+	public static final RegistryObject<Block> SLIME_BASED_RUBBER_BLOCK = BLOCKS.register("slime_based_rubber_block",
 			() -> new Block(AbstractBlock.Properties
 					.of(Material.SPONGE, MaterialColor.COLOR_BROWN)
 					.harvestLevel(0)

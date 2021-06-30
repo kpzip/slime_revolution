@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": { 
+			"model": "slimerevolution:block/slime_based_rubber_block" 
+		}
+	}
+}
