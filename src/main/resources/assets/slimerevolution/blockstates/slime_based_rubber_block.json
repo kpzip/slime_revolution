@@ -1,8 +1,8 @@
 {
     "variants": {
-        "facing=north": { "model": "slimerevolution:block/slime_based_rubber_block" },
-        "facing=south": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 180 },
-        "facing=west":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 270 },
-        "facing=east":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 90 }
+        "facing=north": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 90 },
+        "facing=south": { "model": "slimerevolution:block/slime_based_rubber_block", "y": 270 },
+        "facing=west":  { "model": "slimerevolution:block/slime_based_rubber_block" },
+        "facing=east":  { "model": "slimerevolution:block/slime_based_rubber_block", "y": 180 }
     }
 }
