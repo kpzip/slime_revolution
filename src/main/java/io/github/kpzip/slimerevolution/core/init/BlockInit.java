@@ -23,4 +23,11 @@ public class BlockInit {
 						.sound(SoundType.SLIME_BLOCK)
 						.isRedstoneConductor((state, reader, pos) -> false)
 					));
+	public static final RegistryObject<BlockHorizontal> INDUSTRIAL_BREWER_CONTROLLER = BLOCKS.register("industrial_brewer_controller",
+			() -> new BlockHorizontal(AbstractBlock.Properties
+						.of(Material.METAL, MaterialColor.COLOR_GRAY)
+						.harvestLevel(2)
+						.sound(SoundType.METAL)
+						.isRedstoneConductor((state, reader, pos) -> true)
+					));
 }
