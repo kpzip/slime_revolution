@@ -2,6 +2,7 @@ package io.github.kpzip.slimerevolution.core.init;
 
 import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
+import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerController;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -32,5 +33,14 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.sound(SoundType.METAL)
 						.isRedstoneConductor((state, reader, pos) -> true)
+					));
+	public static final RegistryObject<BlockIndustrialBrewerColumn> INDUSTRIAL_BREWER_COLUMN = BLOCKS.register("industrial_brewer_column",
+			() -> new BlockIndustrialBrewerColumn(AbstractBlock.Properties
+						.of(Material.METAL, MaterialColor.COLOR_GRAY)
+						.harvestLevel(2)
+						.harvestTool(ToolType.PICKAXE)
+						.sound(SoundType.METAL)
+						.isValidSpawn((state, block, reader, type) -> false)
+						.isRedstoneConductor((state, reader, pos) -> false)
 					));
 }
