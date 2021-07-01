@@ -40,12 +40,13 @@ public abstract class BlockMultiblockComponent extends BlockHorizontal {
 	
 	@SuppressWarnings("deprecation")
 	@Override
-	public void neighborChanged(BlockState observerState, World world, BlockPos observerPos, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
-		super.neighborChanged(observerState, world, observerPos, p_220069_4_, p_220069_5_, p_220069_6_);
+	public void neighborChanged(BlockState state, World world, BlockPos pos, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
+		super.neighborChanged(state, world, pos, p_220069_4_, p_220069_5_, p_220069_6_);
 		if (!world.isClientSide) {
-			SlimeRevolution.LOGGER.log(Level.DEBUG, "Observed Change at " + observerPos.toString());
-			if (isMultiBlock(observerState, world, observerPos) && !(observerState.getValue(IS_MULTIBLOCK))) { addMultiBlockProperty(observerState, world, observerPos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
-			if (!(isMultiBlock(observerState, world, observerPos)) && observerState.getValue(IS_MULTIBLOCK)) { removeMultiBlockProperty(observerState, world, observerPos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
+			SlimeRevolution.LOGGER.log(Level.DEBUG, "Observed Change at " + pos.toString());
+			SlimeRevolution.LOGGER.log(Level.DEBUG, isMultiBlock(state, world, pos));
+			if (isMultiBlock(state, world, pos) && !(state.getValue(IS_MULTIBLOCK))) { addMultiBlockProperty(state, world, pos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
+			if (!(isMultiBlock(state, world, pos)) && state.getValue(IS_MULTIBLOCK)) { removeMultiBlockProperty(state, world, pos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
 		}
 	}
 	
