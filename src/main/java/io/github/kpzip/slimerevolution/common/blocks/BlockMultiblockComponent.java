@@ -45,7 +45,7 @@ public abstract class BlockMultiblockComponent extends BlockHorizontal {
 		if (!world.isClientSide) {
 			SlimeRevolution.LOGGER.log(Level.DEBUG, "Observed Change at " + observerPos.toString());
 			if (isMultiBlock(observerState, world, observerPos) && !(observerState.getValue(IS_MULTIBLOCK))) { addMultiBlockProperty(observerState, world, observerPos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
-			if (!(isMultiBlock(observerState, world, observerPos)) && observerState.getValue(IS_MULTIBLOCK)) removeMultiBlockProperty(observerState, world, observerPos);
+			if (!(isMultiBlock(observerState, world, observerPos)) && observerState.getValue(IS_MULTIBLOCK)) { removeMultiBlockProperty(observerState, world, observerPos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
 		}
 	}
 	
