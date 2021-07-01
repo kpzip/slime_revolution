@@ -2,12 +2,13 @@ package io.github.kpzip.slimerevolution.common.blocks;
 
 import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.World;
 
 public class BlockIndustrialBrewerColumn extends BlockMultiblockComponent {
 
-	public BlockIndustrialBrewerColumn(Properties property) {
-		super(property);
+	public BlockIndustrialBrewerColumn(Properties property, VoxelShape shape) {
+		super(property, shape);
 	}
 
 	@Override

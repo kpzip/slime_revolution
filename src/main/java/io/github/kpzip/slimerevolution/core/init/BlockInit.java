@@ -1,6 +1,7 @@
 package io.github.kpzip.slimerevolution.core.init;
 
 import io.github.kpzip.slimerevolution.ModVars;
+import io.github.kpzip.slimerevolution.common.Shapes;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerController;
@@ -43,6 +44,8 @@ public class BlockInit {
 						.sound(SoundType.METAL)
 						.isValidSpawn((state, block, reader, type) -> false)
 						.isSuffocating((state, reader, pos) -> false)
-						.isRedstoneConductor((state, reader, pos) -> false)
+						.isRedstoneConductor((state, reader, pos) -> false),
+						Shapes.SHAPE_BREWING_COLUMN
 					));
+	
 }
