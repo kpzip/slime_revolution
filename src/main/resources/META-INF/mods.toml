@@ -15,10 +15,10 @@ displayURL="https://github.com/kpzip/slime_revolution"
 logoFile="logo.png"
 
 #credits=""
-authors="Kyle `kpzip` Schmerge and Yegor `yeg_` Tryndin" #optional
+authors="Kyle `kpzip` Schmerge and Yegor `yeg_` Tryndin"
 description='''
 Slime Revolution is a mod that adds machines and progression based on the material slime.
-The name `Slime Revolution` refers to the Industrial Revolution if it used slime instead of things like oil and metal.
+The name `Slime Revolution` refers to the Industrial Revolution, but if slime was used as a base material for building machines.
 '''
 
 [[dependencies.slimerevolution]]

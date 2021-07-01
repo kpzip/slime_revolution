@@ -16,8 +16,17 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 	}
 
 	@Override
-	public void updateMultiBlockProperty(BlockState state, World world, BlockPos pos) {
+	public void addMultiBlockProperty(BlockState state, World world, BlockPos pos) {
+		
 		
 	}
+
+	@Override
+	public void removeMultiBlockProperty(BlockState state, World world, BlockPos pos) {
+		
+		
+	}
+
+	
 
 }

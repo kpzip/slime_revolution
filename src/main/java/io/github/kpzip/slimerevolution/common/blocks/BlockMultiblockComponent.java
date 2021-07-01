@@ -39,11 +39,14 @@ public abstract class BlockMultiblockComponent extends BlockHorizontal {
 	@Override
 	public void observedNeighborChange(BlockState observerState, World world, BlockPos observerPos, Block changedBlock, BlockPos changedBlockPos) {
 		super.observedNeighborChange(observerState, world, observerPos, changedBlock, changedBlockPos);
-		if (isMultiBlock(observerState, world, observerPos)) updateMultiBlockProperty(observerState, world, observerPos);
+		if (isMultiBlock(observerState, world, observerPos) && !(observerState.getValue(IS_MULTIBLOCK))) addMultiBlockProperty(observerState, world, observerPos);
+		if (!(isMultiBlock(observerState, world, observerPos)) && observerState.getValue(IS_MULTIBLOCK)) removeMultiBlockProperty(observerState, world, observerPos);
 	}
 	
 	public abstract boolean isMultiBlock(BlockState state, World world, BlockPos pos);
 	
-	public abstract void updateMultiBlockProperty(BlockState state, World world, BlockPos pos);
+	public abstract void addMultiBlockProperty(BlockState state, World world, BlockPos pos);
+	
+	public abstract void removeMultiBlockProperty(BlockState state, World world, BlockPos pos);
 
 }
