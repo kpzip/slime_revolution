@@ -1,6 +1,7 @@
 package io.github.kpzip.slimerevolution.core.init;
 
 import io.github.kpzip.slimerevolution.ModVars;
+import io.github.kpzip.slimerevolution.SlimeRevolution;
 import io.github.kpzip.slimerevolution.common.Shapes;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
@@ -26,7 +27,7 @@ public class BlockInit {
 						.instabreak()
 						.sound(SoundType.SLIME_BLOCK)
 						.isRedstoneConductor((state, reader, pos) -> false)
-					));
+					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_ITEMS));
 	public static final RegistryObject<BlockIndustrialBrewerController> INDUSTRIAL_BREWER_CONTROLLER = BLOCKS.register("industrial_brewer_controller",
 			() -> new BlockIndustrialBrewerController(AbstractBlock.Properties
 						.of(Material.METAL, MaterialColor.COLOR_GRAY)

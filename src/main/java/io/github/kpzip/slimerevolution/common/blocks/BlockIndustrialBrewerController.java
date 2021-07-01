@@ -1,6 +1,7 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -27,6 +28,11 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 		
 	}
 
+	@Override
+	public BlockIndustrialBrewerController tab(ItemGroup category) {
+		this.category = category;
+		return this;
+	}
 	
 
 }

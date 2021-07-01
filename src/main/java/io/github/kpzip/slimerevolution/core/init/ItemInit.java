@@ -13,11 +13,11 @@ public class ItemInit {
 
 	public static final RegistryObject<Item> SLIME_BASED_RUBBER = ITEMS.register("slime_based_rubber",
 			() -> new Item(new Item.Properties()
-						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP)
+						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_ITEMS)
 					));
 	public static final RegistryObject<Item> SLIMEY_IRON = ITEMS.register("slimey_iron",
 			() -> new Item(new Item.Properties()
-						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP)
+						.tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_ITEMS)
 					));
 
 }

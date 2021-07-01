@@ -1,6 +1,7 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
 import net.minecraft.block.BlockState;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.World;
@@ -26,6 +27,12 @@ public class BlockIndustrialBrewerColumn extends BlockMultiblockComponent {
 	public void removeMultiBlockProperty(BlockState state, World world, BlockPos pos) {
 		
 		
+	}
+	
+	@Override
+	public BlockIndustrialBrewerColumn tab(ItemGroup category) {
+		this.category = category;
+		return this;
 	}
 
 	

@@ -6,6 +6,7 @@ import java.util.Map;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.state.DirectionProperty;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -20,7 +21,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public class BlockHorizontal extends Block {
+public class BlockHorizontal extends BlockBaseTab {
 
 	public static final DirectionProperty HORIZONAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 
@@ -92,5 +93,11 @@ public class BlockHorizontal extends Block {
 			return super.getShape(state, reader, pos, context);
 		}
 
+	}
+	
+	@Override
+	public BlockHorizontal tab(ItemGroup category) {
+		this.category = category;
+		return this;
 	}
 }

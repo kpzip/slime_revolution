@@ -3,6 +3,7 @@ package io.github.kpzip.slimerevolution;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import io.github.kpzip.slimerevolution.common.blocks.BlockBaseTab;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import io.github.kpzip.slimerevolution.core.init.ItemInit;
 import net.minecraft.item.BlockItem;
@@ -24,7 +25,8 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 public class SlimeRevolution
 {
     public static final Logger LOGGER = LogManager.getLogger();
-    public static final ItemGroup SLIME_REVOLUTION_GROUP = new SlimeRevolutionGroup("slimerevolutiontab");
+    public static final ItemGroup SLIME_REVOLUTION_GROUP_ITEMS = new SlimeRevolutionGroupItems("slimerevolution_tab_items");
+    public static final ItemGroup SLIME_REVOLUTION_GROUP_MACHINES = new SlimeRevolutionGroupMachines("slimerevolution_tab_machines");
 
     public SlimeRevolution() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -39,20 +41,33 @@ public class SlimeRevolution
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
     	BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(SlimeRevolution.SLIME_REVOLUTION_GROUP))
+			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(((BlockBaseTab)block).getTab()))
 					.setRegistryName(block.getRegistryName()));
 		});
     }
     
-    public static class SlimeRevolutionGroup extends ItemGroup {
+    public static class SlimeRevolutionGroupItems extends ItemGroup {
 
-		public SlimeRevolutionGroup(String label) {
+		public SlimeRevolutionGroupItems(String label) {
 			super(label);
 		}
 
 		@Override
 		public ItemStack makeIcon() {
 			return ItemInit.SLIMEY_IRON.get().getDefaultInstance();
+		}
+    }
+    
+    public static class SlimeRevolutionGroupMachines extends ItemGroup {
+
+		public SlimeRevolutionGroupMachines(String label) {
+			super(label);
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public ItemStack makeIcon() {
+			return Item.byBlock(BlockInit.INDUSTRIAL_BREWER_CONTROLLER.get()).getDefaultInstance();
 		}
     }
 }
