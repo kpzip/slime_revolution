@@ -1,0 +1,12 @@
+{
+    "variants": {
+        "facing=north,is_multiblock=true": { "model": "slimerevolution:block/industrial_brewer_column", "y": 270 },
+        "facing=south,is_multiblock=true": { "model": "slimerevolution:block/industrial_brewer_column", "y": 90 },
+        "facing=west,is_multiblock=true":  { "model": "slimerevolution:block/industrial_brewer_column", "y": 180 },
+        "facing=east,is_multiblock=true":  { "model": "slimerevolution:block/industrial_brewer_column" },
+        "facing=north,is_multiblock=false": { "model": "slimerevolution:block/industrial_brewer_column", "y": 270 },
+        "facing=south,is_multiblock=false": { "model": "slimerevolution:block/industrial_brewer_column", "y": 90 },
+        "facing=west,is_multiblock=false":  { "model": "slimerevolution:block/industrial_brewer_column", "y": 180 },
+        "facing=east,is_multiblock=false":  { "model": "slimerevolution:block/industrial_brewer_column" }
+    }
+}
