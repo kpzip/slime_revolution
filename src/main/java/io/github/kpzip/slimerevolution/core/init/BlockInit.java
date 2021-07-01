@@ -32,6 +32,7 @@ public class BlockInit {
 						.harvestLevel(2)
 						.harvestTool(ToolType.PICKAXE)
 						.sound(SoundType.METAL)
+						.isValidSpawn((state, block, reader, type) -> false)
 						.isRedstoneConductor((state, reader, pos) -> true)
 					));
 	public static final RegistryObject<BlockIndustrialBrewerColumn> INDUSTRIAL_BREWER_COLUMN = BLOCKS.register("industrial_brewer_column",
@@ -41,6 +42,7 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.sound(SoundType.METAL)
 						.isValidSpawn((state, block, reader, type) -> false)
+						.isSuffocating((state, reader, pos) -> false)
 						.isRedstoneConductor((state, reader, pos) -> false)
 					));
 }
