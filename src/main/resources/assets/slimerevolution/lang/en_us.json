@@ -7,5 +7,6 @@
 	"block.slimerevolution.industrial_brewer_controller": "Industrial Brewing Controller",
 	"block.slimerevolution.industrial_brewer_column": "Industrial Brewing Column",
 	
-	"itemGroup.slimerevolutiontab": "Slime Revolution"
+	"itemGroup.slimerevolution_tab_items": "Slime Revolution Items",
+	"itemGroup.slimerevolution_tab_machines": "Slime Revolution Machines"
 }
