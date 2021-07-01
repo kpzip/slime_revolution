@@ -4,6 +4,7 @@ import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.SlimeRevolution;
 import io.github.kpzip.slimerevolution.common.Shapes;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
+import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerChamber;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerController;
 import net.minecraft.block.AbstractBlock;
@@ -36,7 +37,7 @@ public class BlockInit {
 						.sound(SoundType.METAL)
 						.isValidSpawn((state, block, reader, type) -> false)
 						.isRedstoneConductor((state, reader, pos) -> true)
-					));
+					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	public static final RegistryObject<BlockIndustrialBrewerColumn> INDUSTRIAL_BREWER_COLUMN = BLOCKS.register("industrial_brewer_column",
 			() -> new BlockIndustrialBrewerColumn(AbstractBlock.Properties
 						.of(Material.METAL, MaterialColor.COLOR_GRAY)
@@ -47,6 +48,15 @@ public class BlockInit {
 						.isSuffocating((state, reader, pos) -> false)
 						.isRedstoneConductor((state, reader, pos) -> false),
 						Shapes.SHAPE_BREWING_COLUMN
-					));
+					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
+	public static final RegistryObject<BlockIndustrialBrewerChamber> INDUSTRIAL_BREWER_CHAMBER = BLOCKS.register("industrial_brewer_chamber",
+			() -> new BlockIndustrialBrewerChamber(AbstractBlock.Properties
+						.of(Material.METAL, MaterialColor.COLOR_GRAY)
+						.harvestLevel(2)
+						.harvestTool(ToolType.PICKAXE)
+						.sound(SoundType.METAL)
+						.isValidSpawn((state, block, reader, type) -> false)
+						.isRedstoneConductor((state, reader, pos) -> true)
+					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	
 }
