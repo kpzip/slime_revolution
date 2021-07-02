@@ -30,9 +30,9 @@ public class BlockIndustrialBrewerColumn extends BlockMultiblockComponent {
 
 	@Override
 	public void removeMultiBlockProperty(BlockState state, World world, BlockPos pos) {
-		if (state.getBlock().equals(BlockInit.INDUSTRIAL_BREWER_CONTROLLER.get())) world.setBlockAndUpdate(pos, state.setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
-		if (world.getBlockState(pos.above()).getBlock().equals(BlockInit.INDUSTRIAL_BREWER_COLUMN.get())) world.setBlockAndUpdate(pos.above(), world.getBlockState(pos.above()).setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
-		if (world.getBlockState(pos.above().above()).getBlock().equals(BlockInit.INDUSTRIAL_BREWER_CHAMBER.get())) world.setBlockAndUpdate(pos.above().above(), world.getBlockState(pos.above().above()).setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
+		if (state.getBlock().equals(BlockInit.INDUSTRIAL_BREWER_COLUMN.get())) world.setBlockAndUpdate(pos, state.setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
+		if (world.getBlockState(pos.above()).getBlock().equals(BlockInit.INDUSTRIAL_BREWER_CHAMBER.get())) world.setBlockAndUpdate(pos.above(), world.getBlockState(pos.above()).setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
+		if (world.getBlockState(pos.below()).getBlock().equals(BlockInit.INDUSTRIAL_BREWER_CONTROLLER.get())) world.setBlockAndUpdate(pos.below(), world.getBlockState(pos.below()).setValue(BlockMultiblockComponent.IS_MULTIBLOCK, false));
 	}
 	
 	@Override
