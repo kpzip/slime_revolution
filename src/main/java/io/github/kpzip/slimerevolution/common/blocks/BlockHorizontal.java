@@ -21,7 +21,7 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 
-public class BlockHorizontal extends BlockBaseTab {
+public class BlockHorizontal extends BlockBase {
 
 	public static final DirectionProperty HORIZONAL_FACING = BlockStateProperties.HORIZONTAL_FACING;
 

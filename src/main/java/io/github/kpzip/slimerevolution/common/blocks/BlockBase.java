@@ -3,11 +3,11 @@ package io.github.kpzip.slimerevolution.common.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemGroup;
 
-public class BlockBaseTab extends Block {
+public class BlockBase extends Block {
 	
 	protected ItemGroup category = ItemGroup.TAB_MISC;
 
-	public BlockBaseTab(Properties properties) {
+	public BlockBase(Properties properties) {
 		super(properties);
 	}
 
@@ -15,7 +15,7 @@ public class BlockBaseTab extends Block {
 		return category;
 	}
 
-	public BlockBaseTab tab(ItemGroup category) {
+	public BlockBase tab(ItemGroup category) {
 		this.category = category;
 		return this;
 	}

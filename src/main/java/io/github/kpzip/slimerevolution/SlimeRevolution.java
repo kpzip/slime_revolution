@@ -3,7 +3,7 @@ package io.github.kpzip.slimerevolution;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import io.github.kpzip.slimerevolution.common.blocks.BlockBaseTab;
+import io.github.kpzip.slimerevolution.common.blocks.BlockBase;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import io.github.kpzip.slimerevolution.core.init.ItemInit;
 import net.minecraft.item.BlockItem;
@@ -41,7 +41,7 @@ public class SlimeRevolution
     @SubscribeEvent
     public static void onRegisterItems(final RegistryEvent.Register<Item> event) {
     	BlockInit.BLOCKS.getEntries().stream().map(RegistryObject::get).forEach(block -> {
-			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(((BlockBaseTab)block).getTab()))
+			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(((BlockBase)block).getTab()))
 					.setRegistryName(block.getRegistryName()));
 		});
     }
