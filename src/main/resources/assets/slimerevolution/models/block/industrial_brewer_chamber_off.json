@@ -4,7 +4,7 @@
         "particle": "slimerevolution:blocks/industrial_brewer_chamber_front",
         "texture_side": "slimerevolution:blocks/industrial_brewer_chamber_front",
         "texture_side_2": "slimerevolution:blocks/machine_side",
-        "texture_side_3": "slimerevolution:blocks/industrial_brewer_chamber_bottom"
+        "texture_side_3": "slimerevolution:blocks/industrial_brewer_chamber_bottom_off"
     },
     "elements": [
         {   "from": [ 0, 0, 0 ],
