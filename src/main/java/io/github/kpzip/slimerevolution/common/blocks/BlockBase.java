@@ -6,6 +6,7 @@ import net.minecraft.item.ItemGroup;
 public class BlockBase extends Block {
 	
 	protected ItemGroup category = ItemGroup.TAB_MISC;
+	protected boolean hasItem = true;
 
 	public BlockBase(Properties properties) {
 		super(properties);
@@ -17,6 +18,11 @@ public class BlockBase extends Block {
 
 	public BlockBase tab(ItemGroup category) {
 		this.category = category;
+		return this;
+	}
+	
+	public BlockBase setHasItem(boolean b) {
+		this.hasItem = b;
 		return this;
 	}
 	
