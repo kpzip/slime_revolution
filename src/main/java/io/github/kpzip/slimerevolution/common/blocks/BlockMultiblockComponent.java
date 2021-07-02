@@ -1,8 +1,5 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
-import org.apache.logging.log4j.Level;
-
-import io.github.kpzip.slimerevolution.SlimeRevolution;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -43,8 +40,8 @@ public abstract class BlockMultiblockComponent extends BlockHorizontal {
 	public void neighborChanged(BlockState state, World world, BlockPos pos, Block p_220069_4_, BlockPos p_220069_5_, boolean p_220069_6_) {
 		super.neighborChanged(state, world, pos, p_220069_4_, p_220069_5_, p_220069_6_);
 		if (!world.isClientSide) {
-			if (isMultiBlock(state, world, pos) && !(state.getValue(IS_MULTIBLOCK))) { addMultiBlockProperty(state, world, pos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
-			if (!(isMultiBlock(state, world, pos)) && state.getValue(IS_MULTIBLOCK)) { removeMultiBlockProperty(state, world, pos); SlimeRevolution.LOGGER.log(Level.WARN, "adding multiblock property");}
+			if (isMultiBlock(state, world, pos) && !(state.getValue(IS_MULTIBLOCK))) addMultiBlockProperty(state, world, pos);
+			if (!(isMultiBlock(state, world, pos)) && state.getValue(IS_MULTIBLOCK)) removeMultiBlockProperty(state, world, pos);
 		}
 	}
 	
