@@ -20,9 +20,9 @@
             }
         }
     ],
-    "display": {
-		"firstperson_righthand": {
-			"rotation" : [0, 0, 0]
-		}
-	}
+    "firstperson_righthand": {
+        "rotation": [ 0, 225, 0 ],
+        "translation": [ 0, 0, 0 ],
+        "scale": [ 0.40, 0.40, 0.40 ]
+    }
 }
