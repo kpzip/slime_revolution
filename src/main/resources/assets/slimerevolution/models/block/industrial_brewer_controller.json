@@ -19,10 +19,5 @@
                 "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#texture_side", "cullface": "east" }
             }
         }
-    ],
-    "firstperson_righthand": {
-        "rotation": [ 0, 135, 0 ],
-        "translation": [ 0, 0, 0 ],
-        "scale": [ 0.40, 0.40, 0.40 ]
-    }
+    ]
 }
