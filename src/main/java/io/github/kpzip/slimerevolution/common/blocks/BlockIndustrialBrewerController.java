@@ -2,9 +2,11 @@ package io.github.kpzip.slimerevolution.common.blocks;
 
 import javax.annotation.Nullable;
 
+import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialBrewerController;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.ItemGroup;
@@ -60,7 +62,7 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 	@Nullable
 	@Override
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-		return ;
+		return new TileEntityIndustrialBrewerController();
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -75,7 +77,10 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 	}
 
 	private void interact(World world, BlockPos pos, PlayerEntity player) {
-		return asdofkns;
+		TileEntity te = world.getBlockEntity(pos);
+		if (te instanceof TileEntityIndustrialBrewerController && player instanceof ServerPlayerEntity) {
+			TileEntityIndustrialBrewerController te2 = (TileEntityIndustrialBrewerController) te;
+		}
 	}
 	
 	@SuppressWarnings("deprecation")
