@@ -10,7 +10,4 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class SoundInit {
 	public static final DeferredRegister<SoundEvent> SOUNDS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, ModVars.MOD_ID);
-	
-	public static final RegistryObject<SoundEvent> EXAMPLE_SOUND = SOUNDS.register("", 
-			() -> new SoundEvent(new ResourceLocation(ModVars.MOD_ID, "")));
 }
