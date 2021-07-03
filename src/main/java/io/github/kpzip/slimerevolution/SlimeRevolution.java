@@ -5,8 +5,11 @@ import org.apache.logging.log4j.Logger;
 
 import io.github.kpzip.slimerevolution.common.blocks.BlockBase;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
+import io.github.kpzip.slimerevolution.core.init.ContainerInit;
 import io.github.kpzip.slimerevolution.core.init.ItemInit;
+import io.github.kpzip.slimerevolution.core.init.RecipeSerializerInit;
 import io.github.kpzip.slimerevolution.core.init.SoundInit;
+import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -35,6 +38,9 @@ public class SlimeRevolution
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
         SoundInit.SOUNDS.register(bus);
+        ContainerInit.CONTAINERS.register(bus);
+        TileEntityInit.TILE_ENTITIES.register(bus);
+        RecipeSerializerInit.RECIPE_SERIALIZERS.register(bus);
         
         MinecraftForge.EVENT_BUS.register(this);
         
