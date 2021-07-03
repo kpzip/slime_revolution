@@ -17,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.network.NetworkHooks;
 
 public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 
@@ -65,7 +66,6 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 		return new TileEntityIndustrialBrewerController();
 	}
 	
-	@SuppressWarnings("deprecation")
 	@Override
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult traceResult) {
 		if (world.isClientSide()) {
@@ -80,6 +80,7 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 		TileEntity te = world.getBlockEntity(pos);
 		if (te instanceof TileEntityIndustrialBrewerController && player instanceof ServerPlayerEntity) {
 			TileEntityIndustrialBrewerController te2 = (TileEntityIndustrialBrewerController) te;
+			NetworkHooks.openGui((ServerPlayerEntity) player, te2, te2::encodeExtraData);
 		}
 	}
 	

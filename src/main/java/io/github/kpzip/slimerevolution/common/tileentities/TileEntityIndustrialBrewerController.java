@@ -1,20 +1,25 @@
 package io.github.kpzip.slimerevolution.common.tileentities;
 
+import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
 
 public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
 
 	public TileEntityIndustrialBrewerController() {
-		super(type);
+		super(TileEntityInit.INDUSTRIAL_BREWER_CONTROLLER_TILE_ENTITY_TYPE.get());
+	}
+	
+	public void encodeExtraData(PacketBuffer buffer) {
+		//TODO
 	}
 
 	@Override
