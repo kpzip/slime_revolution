@@ -14,6 +14,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -52,6 +53,11 @@ public class SlimeRevolution
 			event.getRegistry().register(new BlockItem(block, new Item.Properties().tab(((BlockBase)block).getTab()))
 					.setRegistryName(block.getRegistryName()));
 		});
+    }
+    
+    @SubscribeEvent
+    public static void registerTE(RegistryEvent.Register<TileEntityType<?>> evt) {
+    	
     }
     
     public static class SlimeRevolutionGroupItems extends ItemGroup {
