@@ -2,8 +2,12 @@ package io.github.kpzip.slimerevolution.common.blocks;
 
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.World;
 
@@ -39,6 +43,17 @@ public class BlockIndustrialBrewerColumn extends BlockMultiblockComponent {
 	public BlockIndustrialBrewerColumn tab(ItemGroup category) {
 		this.category = category;
 		return this;
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Override
+	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult traceResult) {
+		if (state.getValue(BlockMultiblockComponent.IS_MULTIBLOCK)) {
+			return world.getBlockState(pos.below()).getBlock().use(world.getBlockState(pos.below()), world, pos.below(), player, hand, traceResult);
+		}
+		else {
+			return ActionResultType.FAIL;
+		}
 	}
 
 	

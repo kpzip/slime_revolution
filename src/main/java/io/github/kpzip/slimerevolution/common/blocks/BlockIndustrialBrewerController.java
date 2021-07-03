@@ -68,6 +68,9 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponent {
 	
 	@Override
 	public ActionResultType use(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult traceResult) {
+		if (!state.getValue(BlockMultiblockComponent.IS_MULTIBLOCK)) {
+			return ActionResultType.FAIL;
+		}
 		if (world.isClientSide()) {
 			return ActionResultType.SUCCESS;
 		}
