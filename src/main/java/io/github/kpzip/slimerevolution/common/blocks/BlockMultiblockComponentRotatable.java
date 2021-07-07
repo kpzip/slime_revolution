@@ -10,16 +10,14 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.World;
 
-public abstract class BlockMultiblockComponent extends BlockHorizontal {
-	
-	public static final BooleanProperty IS_MULTIBLOCK = BooleanProperty.create("is_multiblock");
+public abstract class BlockMultiblockComponentRotatable extends BlockHorizontal implements IMultiblockComponent {
 
-	public BlockMultiblockComponent(Properties property) {
+	public BlockMultiblockComponentRotatable(Properties property) {
 		super(property);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONAL_FACING, Direction.NORTH).setValue(IS_MULTIBLOCK, false));
 	}
 	
-	public BlockMultiblockComponent(Properties property, VoxelShape shape) {
+	public BlockMultiblockComponentRotatable(Properties property, VoxelShape shape) {
 		super(property, shape);
 		this.registerDefaultState(this.stateDefinition.any().setValue(HORIZONAL_FACING, Direction.NORTH).setValue(IS_MULTIBLOCK, false));
 	}
@@ -30,7 +28,7 @@ public abstract class BlockMultiblockComponent extends BlockHorizontal {
 	}
 	
 	@Override
-	protected void createBlockStateDefinition(Builder<Block, BlockState> builder) {
+	public void createBlockStateDefinition(Builder<Block, BlockState> builder) {
 		super.createBlockStateDefinition(builder);
 		builder.add(IS_MULTIBLOCK);
 	}
