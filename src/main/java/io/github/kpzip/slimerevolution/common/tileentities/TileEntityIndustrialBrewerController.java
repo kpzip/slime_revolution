@@ -137,26 +137,22 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 	@Override
 	public boolean isFluidValid(int tank, FluidStack stack) {
-		// TODO Auto-generated method stub
-		return false;
+		return inTank.isFluidValid(tank, stack) || outTank.isFluidValid(tank, stack);
 	}
 
 	@Override
 	public int fill(FluidStack resource, FluidAction action) {
-		// TODO Auto-generated method stub
-		return 0;
+		return inTank.fill(resource, action);
 	}
 
 	@Override
 	public FluidStack drain(FluidStack resource, FluidAction action) {
-		// TODO Auto-generated method stub
-		return null;
+		return outTank.drain(resource, action);
 	}
 
 	@Override
 	public FluidStack drain(int maxDrain, FluidAction action) {
-		// TODO Auto-generated method stub
-		return null;
+		return outTank.drain(maxDrain, action);
 	}
 
 }

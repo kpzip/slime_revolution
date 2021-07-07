@@ -55,11 +55,6 @@ public class SlimeRevolution
 		});
     }
     
-    @SubscribeEvent
-    public static void registerTE(RegistryEvent.Register<TileEntityType<?>> evt) {
-    	
-    }
-    
     public static class SlimeRevolutionGroupItems extends ItemGroup {
 
 		public SlimeRevolutionGroupItems(String label) {
