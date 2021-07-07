@@ -84,14 +84,12 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 	@Override
 	public boolean canPlaceItemThroughFace(int p_180462_1_, ItemStack p_180462_2_, Direction p_180462_3_) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean canTakeItemThroughFace(int p_180461_1_, ItemStack p_180461_2_, Direction p_180461_3_) {
-		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
