@@ -11,8 +11,17 @@ import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.templates.FluidTank;
 
-public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity {
+public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler {
+	
+	public FluidTank inTank = new FluidTank(10000); //ID 0
+	public FluidTank outTank = new FluidTank(10000); //ID 1
+	
+	
+	
 
 	public TileEntityIndustrialBrewerController() {
 		super(TileEntityInit.INDUSTRIAL_BREWER_CONTROLLER_TILE_ENTITY_TYPE.get());
@@ -100,6 +109,52 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 	@Override
 	protected Container createMenu(int p_213906_1_, PlayerInventory p_213906_2_) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getTanks() {
+		return 2;
+	}
+
+	@Override
+	public FluidStack getFluidInTank(int tank) {
+		switch (tank) {
+		case 0:
+			return inTank.getFluidInTank(0).copy();
+		case 1:
+			return outTank.getFluidInTank(0).copy();
+		default:
+			return inTank.getFluidInTank(0).copy();
+		}
+	}
+
+	@Override
+	public int getTankCapacity(int tank) {
+		return 10000;
+	}
+
+	@Override
+	public boolean isFluidValid(int tank, FluidStack stack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int fill(FluidStack resource, FluidAction action) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public FluidStack drain(FluidStack resource, FluidAction action) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FluidStack drain(int maxDrain, FluidAction action) {
 		// TODO Auto-generated method stub
 		return null;
 	}
