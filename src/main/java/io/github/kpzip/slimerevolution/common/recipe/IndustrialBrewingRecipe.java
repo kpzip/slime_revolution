@@ -14,8 +14,8 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 	
 	
 	
-	private FluidStack input;
-	private FluidStack output;
+	private FluidStack input; //required fluid ammount to start crafting this recipe
+	private FluidStack output; //fluid ammount produced by this recipe
 	
 	private Ingredient starterItem; //nether wart or nothing
 	private Ingredient mainIngredient; //the main ingredient for a potion
