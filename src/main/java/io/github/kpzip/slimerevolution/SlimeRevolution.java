@@ -44,7 +44,6 @@ public class SlimeRevolution
         RecipeSerializerInit.RECIPE_SERIALIZERS.register(bus);
         
         MinecraftForge.EVENT_BUS.register(this);
-        
     }
 
     @SubscribeEvent
