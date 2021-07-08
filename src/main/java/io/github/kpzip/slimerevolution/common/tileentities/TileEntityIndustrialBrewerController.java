@@ -1,5 +1,9 @@
 package io.github.kpzip.slimerevolution.common.tileentities;
 
+import javax.annotation.Nullable;
+
+import io.github.kpzip.slimerevolution.common.recipe.IndustrialBrewingRecipe;
+import io.github.kpzip.slimerevolution.core.init.RecipeTypesInit;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -12,6 +16,7 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
+import net.minecraft.util.IIntArray;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
@@ -19,18 +24,48 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 
 public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler {
 	
-	public FluidTank inTank = new FluidTank(10000); //ID 0
-	public FluidTank outTank = new FluidTank(10000); //ID 1
+	private FluidTank inTank = new FluidTank(10000); //ID 0
+	private FluidTank outTank = new FluidTank(10000); //ID 1
 	
+	private int progress;
 	
-	
+	private final IIntArray fields = new IIntArray() {
+
+		@Override
+		public int get(int index) {
+			switch (index) {
+			case 0:
+				return progress;
+			default:
+				return 0;
+			}
+		}
+
+		@Override
+		public void set(int index, int value) {
+			switch (index) {
+			case 0:
+				progress = value;
+				break;
+			default:
+				break;
+			}
+			
+		}
+
+		@Override
+		public int getCount() {
+			return 1;
+		}
+		
+	};
 
 	public TileEntityIndustrialBrewerController() {
 		super(TileEntityInit.INDUSTRIAL_BREWER_CONTROLLER_TILE_ENTITY_TYPE.get());
 	}
 	
 	public void encodeExtraData(PacketBuffer buffer) {
-		//TODO
+		buffer.writeByte(fields.getCount());
 	}
 	
 	@Override
@@ -104,8 +139,16 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 	@Override
 	public void tick() {
-		// TODO Auto-generated method stub
 		
+	}
+	
+	//returns null if there is no valid recipe
+	@Nullable
+	public IndustrialBrewingRecipe getRecipe() {
+		if (this.level == null || getItem(0).isEmpty()) {
+			return null;
+		}
+		return this.level.getRecipeManager().getRecipeFor(RecipeTypeInit.INDUSTRIAL_BREWING, p_215371_2_, p_215371_3_)
 	}
 
 	@Override

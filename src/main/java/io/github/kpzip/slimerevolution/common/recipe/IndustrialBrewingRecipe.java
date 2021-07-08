@@ -2,7 +2,7 @@ package io.github.kpzip.slimerevolution.common.recipe;
 
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialBrewerController;
 import io.github.kpzip.slimerevolution.core.init.RecipeSerializerInit;
-import io.github.kpzip.slimerevolution.core.init.RecipeTypesInit;
+import io.github.kpzip.slimerevolution.core.init.RecipeTypeInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -147,7 +147,7 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 
 	@Override
 	public IRecipeType<?> getType() {
-		return RecipeTypesInit.INDUSTRIAL_BREWING;
+		return RecipeTypeInit.INDUSTRIAL_BREWING;
 	}
 
 }
