@@ -1,6 +1,8 @@
 package io.github.kpzip.slimerevolution.common.recipe;
 
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialBrewerController;
+import io.github.kpzip.slimerevolution.core.init.RecipeSerializerInit;
+import io.github.kpzip.slimerevolution.core.init.RecipeTypesInit;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.IRecipeSerializer;
@@ -140,14 +142,12 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 
 	@Override
 	public IRecipeSerializer<?> getSerializer() {
-		// TODO Auto-generated method stub
-		return null;
+		return RecipeSerializerInit.INDUSTRIAL_BREWING_SERIALIZER.get();
 	}
 
 	@Override
 	public IRecipeType<?> getType() {
-		// TODO Auto-generated method stub
-		return null;
+		return RecipeTypesInit.INDUSTRIAL_BREWING;
 	}
 
 }

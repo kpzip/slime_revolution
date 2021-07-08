@@ -49,13 +49,41 @@ public class IndustrialBrewingRecipeSerializer extends ForgeRegistryEntry<IRecip
 
 	@Override
 	public IndustrialBrewingRecipe fromNetwork(ResourceLocation recipeId, PacketBuffer buffer) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		FluidStack inFluid = buffer.readFluidStack();
+		FluidStack outFluid = buffer.readFluidStack();
+		
+		Ingredient starterItem = Ingredient.fromNetwork(buffer);
+		Ingredient mainIngredient = Ingredient.fromNetwork(buffer);
+		Ingredient inverter = Ingredient.fromNetwork(buffer);
+		Ingredient splashModifier = Ingredient.fromNetwork(buffer);
+		Ingredient extensionModifier = Ingredient.fromNetwork(buffer);
+		Ingredient lingeringModifier = Ingredient.fromNetwork(buffer);
+		
+		ItemStack residue = buffer.readItem();
+		
+		int duration = buffer.readInt();
+		int powerUsage = buffer.readInt();
+		
+		return new IndustrialBrewingRecipe(inFluid, outFluid, starterItem, mainIngredient, inverter, splashModifier, extensionModifier, lingeringModifier, residue, duration, powerUsage, recipeId);
 	}
 
 	@Override
 	public void toNetwork(PacketBuffer buffer, IndustrialBrewingRecipe recipe) {
-		// TODO Auto-generated method stub
+		buffer.writeFluidStack(recipe.getInput());
+		buffer.writeFluidStack(recipe.getOutput());
+		
+		recipe.getStarterItem().toNetwork(buffer);
+		recipe.getMainIngredient().toNetwork(buffer);
+		recipe.getInverter().toNetwork(buffer);
+		recipe.getSplashModifier().toNetwork(buffer);
+		recipe.getExtenionModifier().toNetwork(buffer);
+		recipe.getLingeringModifier().toNetwork(buffer);
+		
+		buffer.writeItem(recipe.getResidue());
+		
+		buffer.writeVarInt(recipe.getDuration());
+		buffer.writeVarInt(recipe.getPowerUsage());
 		
 	}
 
