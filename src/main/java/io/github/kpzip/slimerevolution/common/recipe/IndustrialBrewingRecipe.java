@@ -24,7 +24,7 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 	private Ingredient extenionModifier; //glowstone or redstone or nothing
 	private Ingredient lingeringModifier; //dragons breath or nothing
 	
-	private ItemStack residue; //Residual item to be created for brewing this potion 
+	private ItemStack residue; //Residual item to be created for brewing this potion
 	
 	private int duration = 40; //in ticks. 20 ticks = 1 second
 	

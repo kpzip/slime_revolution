@@ -1,11 +1,13 @@
 package io.github.kpzip.slimerevolution.common.tileentities;
 
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
@@ -29,6 +31,21 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	
 	public void encodeExtraData(PacketBuffer buffer) {
 		//TODO
+	}
+	
+	@Override
+	public CompoundNBT save(CompoundNBT compound) {
+		super.save(compound);
+		inTank.writeToNBT(compound);
+		outTank.writeToNBT(compound);
+		return compound;
+	}
+	
+	@Override
+	public void load(BlockState state, CompoundNBT compound) {
+		super.load(state, compound);
+		inTank.readFromNBT(compound);
+		outTank.readFromNBT(compound);
 	}
 
 	@Override
