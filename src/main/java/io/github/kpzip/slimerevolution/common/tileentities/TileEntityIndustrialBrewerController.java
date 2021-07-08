@@ -35,17 +35,23 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	
 	@Override
 	public CompoundNBT save(CompoundNBT compound) {
+		//IMPORTANT: Always call super method since it saves important information about the tile entity
 		super.save(compound);
+		
 		inTank.writeToNBT(compound);
 		outTank.writeToNBT(compound);
+		
 		return compound;
 	}
 	
 	@Override
 	public void load(BlockState state, CompoundNBT compound) {
+		//IMPORTANT: Always call super method since it loads important information about the tile entity
 		super.load(state, compound);
+		
 		inTank.readFromNBT(compound);
 		outTank.readFromNBT(compound);
+		
 	}
 
 	@Override
