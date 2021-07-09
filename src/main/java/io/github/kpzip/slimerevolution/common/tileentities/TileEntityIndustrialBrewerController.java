@@ -25,6 +25,16 @@ import net.minecraftforge.fluids.capability.templates.FluidTank;
 
 public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler, IUsesMachineRecipe<IndustrialBrewingRecipe> {
 	
+	public static final int NETHER_WART_SLOT = 0;
+	public static final int MAIN_INGREDIENT = 1;
+	public static final int INVERTER_SLOT = 2;
+	public static final int SPLASH_SLOT = 3;
+	public static final int MODIFIER_SLOT = 4;
+	public static final int LINGERING_SLOT = 5;
+	public static final int RESIDUE_SLOT = 6;
+	
+	
+	
 	private FluidTank inTank = new FluidTank(10000); //ID 0
 	private FluidTank outTank = new FluidTank(10000); //ID 1
 	
@@ -76,6 +86,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		
 		inTank.writeToNBT(compound);
 		outTank.writeToNBT(compound);
+		compound.putInt("Progress", progress);
 		
 		return compound;
 	}
@@ -87,6 +98,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		
 		inTank.readFromNBT(compound);
 		outTank.readFromNBT(compound);
+		progress = compound.getInt("Progress");
 		
 	}
 
@@ -165,7 +177,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	public void doWork(IndustrialBrewingRecipe recipe) {
 		assert this.level != null;
 		
-		ItemStack current = getItem(1);
+		ItemStack current = getItem(RESIDUE_SLOT);
 		ItemStack output = getWorkOutput(recipe);
 		
 		if (!current.isEmpty()) {
@@ -196,7 +208,17 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		if (!current.isEmpty()) {
 			current.grow(output.getCount());
 		}
+		else {
+			setItem(RESIDUE_SLOT, output);
+		}
+		progress = 0;
 		
+		this.removeItem(NETHER_WART_SLOT, 1);
+		this.removeItem(MAIN_INGREDIENT, 1);
+		this.removeItem(INVERTER_SLOT, 1);
+		this.removeItem(SPLASH_SLOT, 1);
+		this.removeItem(MODIFIER_SLOT, 1);
+		this.removeItem(LINGERING_SLOT, 1);
 		
 	}
 
