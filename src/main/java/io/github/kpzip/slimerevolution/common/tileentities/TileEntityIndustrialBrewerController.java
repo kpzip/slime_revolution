@@ -2,6 +2,7 @@ package io.github.kpzip.slimerevolution.common.tileentities;
 
 import javax.annotation.Nullable;
 
+import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.common.recipe.IUsesMachineRecipe;
 import io.github.kpzip.slimerevolution.common.recipe.IndustrialBrewingRecipe;
 import io.github.kpzip.slimerevolution.core.init.RecipeTypeInit;
@@ -10,18 +11,27 @@ import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.ItemStackHelper;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
+import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.ITickableTileEntity;
 import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIntArray;
+import net.minecraft.util.NonNullList;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraftforge.common.capabilities.Capability;
+import net.minecraftforge.common.util.LazyOptional;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
+import net.minecraftforge.items.wrapper.SidedInvWrapper;
 
 public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler, IUsesMachineRecipe<IndustrialBrewingRecipe> {
 	
@@ -33,7 +43,8 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	public static final int LINGERING_SLOT = 5;
 	public static final int RESIDUE_SLOT = 6;
 	
-	
+	private NonNullList<ItemStack> items;
+	private final LazyOptional<? extends IItemHandler> [] handlers;
 	
 	private FluidTank inTank = new FluidTank(10000); //ID 0
 	private FluidTank outTank = new FluidTank(10000); //ID 1
@@ -73,6 +84,8 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 	public TileEntityIndustrialBrewerController() {
 		super(TileEntityInit.INDUSTRIAL_BREWER_CONTROLLER_TILE_ENTITY_TYPE.get());
+		this.handlers = SidedInvWrapper.create(this, Direction.UP, Direction.DOWN, Direction.NORTH);
+		this.items = NonNullList.withSize(7, ItemStack.EMPTY);
 	}
 	
 	public void encodeExtraData(PacketBuffer buffer) {
@@ -84,6 +97,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		//IMPORTANT: Always call super method since it saves important information about the tile entity
 		super.save(compound);
 		
+		ItemStackHelper.saveAllItems(compound, items);
 		inTank.writeToNBT(compound);
 		outTank.writeToNBT(compound);
 		compound.putInt("Progress", progress);
@@ -96,63 +110,122 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		//IMPORTANT: Always call super method since it loads important information about the tile entity
 		super.load(state, compound);
 		
+		this.items = NonNullList.withSize(2, ItemStack.EMPTY);
+		ItemStackHelper.loadAllItems(compound, this.items);
 		inTank.readFromNBT(compound);
 		outTank.readFromNBT(compound);
 		progress = compound.getInt("Progress");
 		
 	}
-
+	
 	@Override
-	public int getContainerSize() {
-		// TODO Auto-generated method stub
-		return 0;
+	@Nullable
+	public SUpdateTileEntityPacket getUpdatePacket() {
+		CompoundNBT compound = this.getUpdateTag();
+		ItemStackHelper.saveAllItems(compound, this.items);
+		inTank.writeToNBT(compound);
+		outTank.writeToNBT(compound);
+		return new SUpdateTileEntityPacket(this.worldPosition, 1, compound);
 	}
-
+	
 	@Override
-	public boolean isEmpty() {
-		// TODO Auto-generated method stub
-		return false;
+	public CompoundNBT getUpdateTag() {
+		CompoundNBT tag = super.getUpdateTag();
+		tag.putInt("Progress", this.progress);
+		return tag;
 	}
-
+	
+	@Nullable
 	@Override
-	public ItemStack getItem(int p_70301_1_) {
-		// TODO Auto-generated method stub
-		return null;
+	public <T> LazyOptional<T> getCapability(Capability<T> cap, Direction side) {
+		if (!this.remove && side != null && cap == CapabilityItemHandler.ITEM_HANDLER_CAPABILITY) {
+			if (side == Direction.UP) {
+				return this.handlers[0].cast();
+			}
+			else if (side == Direction.DOWN) {
+				return this.handlers[1].cast();
+			}
+			else {
+				return this.handlers[2].cast();
+			}
+		}
+		else {
+			return super.getCapability(cap, side);
+		}
 	}
-
+	
 	@Override
-	public ItemStack removeItem(int p_70298_1_, int p_70298_2_) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public ItemStack removeItemNoUpdate(int p_70304_1_) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setItem(int p_70299_1_, ItemStack p_70299_2_) {
-		// TODO Auto-generated method stub
+	public void setRemoved() {
+		super.setRemoved();
+		
+		for (LazyOptional<? extends IItemHandler> handler : this.handlers) {
+			handler.invalidate();
+		}
 		
 	}
 
 	@Override
-	public boolean stillValid(PlayerEntity p_70300_1_) {
-		// TODO Auto-generated method stub
-		return false;
+	public int getContainerSize() {
+		return 7;
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return getItem(NETHER_WART_SLOT).isEmpty() && 
+				getItem(MAIN_INGREDIENT).isEmpty() &&
+				getItem(INVERTER_SLOT).isEmpty() &&
+				getItem(SPLASH_SLOT).isEmpty() &&
+				getItem(MODIFIER_SLOT).isEmpty() &&
+				getItem(LINGERING_SLOT).isEmpty() &&
+				getItem(RESIDUE_SLOT).isEmpty();
+	}
+
+	@Override
+	public ItemStack getItem(int index) {
+		return items.get(index);
+	}
+
+	@Override
+	public ItemStack removeItem(int index, int ammount) {
+		return ItemStackHelper.removeItem(items, index, ammount);
+	}
+
+	@Override
+	public ItemStack removeItemNoUpdate(int index) {
+		return ItemStackHelper.takeItem(items, index);
+	}
+
+	@Override
+	public void setItem(int index, ItemStack item) {
+		items.set(index, item);
+		
+	}
+
+	@Override
+	public boolean stillValid(PlayerEntity player) {
+		return this.level != null && this.level.getBlockEntity(this.worldPosition) == this && 
+				player.distanceToSqr(this.worldPosition.getX() + 0.5, this.worldPosition.getY() + 0.5, this.worldPosition.getZ()) <= 64;
 	}
 
 	@Override
 	public void clearContent() {
-		// TODO Auto-generated method stub
+		items.clear();
 		
 	}
 
 	@Override
 	public void tick() {
-		
+		if (this.level == null || this.level.isClientSide) {
+			return;
+		}
+		this.setChanged();
+		IndustrialBrewingRecipe recipe = getRecipe();
+		if (recipe != null) {
+			doWork(recipe);
+		}
+		else {
+			stopWork();
+		}
 	}
 	
 	//returns null if there is no valid recipe
@@ -192,7 +265,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		if (progress < recipe.getDuration()) {
 			progress ++;
 		}
-		else if (progress >= recipe.getDuration() && !this.level.isClientSide) {
+		else if (progress >= recipe.getDuration()) {
 			finishWork(recipe, current, output);
 		}
 		
@@ -223,31 +296,33 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	}
 
 	@Override
-	public int[] getSlotsForFace(Direction p_180463_1_) {
-		// TODO Auto-generated method stub
-		return null;
+	public int[] getSlotsForFace(Direction facing) {
+		if (facing.equals(Direction.DOWN)) {
+			return new int [] {RESIDUE_SLOT};
+		}
+		else {
+			return new int [] {NETHER_WART_SLOT, MAIN_INGREDIENT, INVERTER_SLOT, SPLASH_SLOT, MODIFIER_SLOT, LINGERING_SLOT};
+		}
 	}
 
 	@Override
-	public boolean canPlaceItemThroughFace(int p_180462_1_, ItemStack p_180462_2_, Direction p_180462_3_) {
-		return true;
+	public boolean canPlaceItemThroughFace(int index, ItemStack item, Direction facing) {
+		return index != RESIDUE_SLOT;
 	}
 
 	@Override
-	public boolean canTakeItemThroughFace(int p_180461_1_, ItemStack p_180461_2_, Direction p_180461_3_) {
-		return true;
+	public boolean canTakeItemThroughFace(int index, ItemStack item, Direction facing) {
+		return index == RESIDUE_SLOT;
 	}
 
 	@Override
 	protected ITextComponent getDefaultName() {
-		// TODO Auto-generated method stub
-		return null;
+		return new TranslationTextComponent("container." + ModVars.MOD_ID + ".industrial_brewer");
 	}
 
 	@Override
-	protected Container createMenu(int p_213906_1_, PlayerInventory p_213906_2_) {
-		// TODO Auto-generated method stub
-		return null;
+	protected Container createMenu(int id, PlayerInventory playerInv) {
+		return new IndustrialBrewerContainer(id, playerInv, this, this.fields);
 	}
 
 	@Override

@@ -23,7 +23,7 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 	private Ingredient mainIngredient; //the main ingredient for a potion
 	private Ingredient inverter; //fermented spider eye or nothing
 	private Ingredient splashModifier; //gunpowder or nothing
-	private Ingredient extenionModifier; //glowstone or redstone or nothing
+	private Ingredient extentionModifier; //glowstone or redstone or nothing
 	private Ingredient lingeringModifier; //dragons breath or nothing
 	
 	private ItemStack residue; //Residual item to be created for brewing this potion
@@ -39,7 +39,7 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 	
 	public IndustrialBrewingRecipe(FluidStack input, FluidStack output,
 			Ingredient starterItem, Ingredient mainIngredient, Ingredient inverter, Ingredient splashModifier,
-			Ingredient extenionModifier, Ingredient lingeringModifier, ItemStack residue, int duration, int powerUsage, ResourceLocation id) {
+			Ingredient extentionModifier, Ingredient lingeringModifier, ItemStack residue, int duration, int powerUsage, ResourceLocation id) {
 		
 		this.input = input;
 		this.output = output;
@@ -48,7 +48,7 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 		this.mainIngredient = mainIngredient;
 		this.inverter = inverter;
 		this.splashModifier = splashModifier;
-		this.extenionModifier = extenionModifier;
+		this.extentionModifier = extentionModifier;
 		this.lingeringModifier = lingeringModifier;
 		
 		this.residue = residue;
@@ -85,8 +85,8 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 		return splashModifier;
 	}
 
-	public Ingredient getExtenionModifier() {
-		return extenionModifier;
+	public Ingredient getExtentionModifier() {
+		return extentionModifier;
 	}
 
 	public Ingredient getLingeringModifier() {
@@ -115,8 +115,14 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 
 	@Override
 	public boolean matches(TileEntityIndustrialBrewerController te, World world) {
-		// TODO Auto-generated method stub
-		return false;
+		return starterItem.test(te.getItem(TileEntityIndustrialBrewerController.NETHER_WART_SLOT)) &&
+				mainIngredient.test(te.getItem(TileEntityIndustrialBrewerController.MAIN_INGREDIENT)) &&
+				inverter.test(te.getItem(TileEntityIndustrialBrewerController.INVERTER_SLOT)) &&
+				splashModifier.test(te.getItem(TileEntityIndustrialBrewerController.SPLASH_SLOT)) &&
+				extentionModifier.test(te.getItem(TileEntityIndustrialBrewerController.MODIFIER_SLOT)) &&
+				lingeringModifier.test(te.getItem(TileEntityIndustrialBrewerController.LINGERING_SLOT)) &&
+				te.getFluidInTank(0).isFluidEqual(input) && te.getFluidInTank(0).getAmount() >= input.getAmount() &&
+				te.getFluidInTank(1).isFluidEqual(output) && te.getFluidInTank(1).getAmount() >= output.getAmount();
 	}
 
 	@Override
