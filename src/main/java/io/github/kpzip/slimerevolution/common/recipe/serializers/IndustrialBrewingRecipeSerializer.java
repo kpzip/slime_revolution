@@ -77,7 +77,7 @@ public class IndustrialBrewingRecipeSerializer extends ForgeRegistryEntry<IRecip
 		recipe.getMainIngredient().toNetwork(buffer);
 		recipe.getInverter().toNetwork(buffer);
 		recipe.getSplashModifier().toNetwork(buffer);
-		recipe.getExtenionModifier().toNetwork(buffer);
+		recipe.getExtentionModifier().toNetwork(buffer);
 		recipe.getLingeringModifier().toNetwork(buffer);
 		
 		buffer.writeItem(recipe.getResidue());
