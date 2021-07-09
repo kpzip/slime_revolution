@@ -121,7 +121,6 @@ public class IndustrialBrewingRecipe implements IRecipe<TileEntityIndustrialBrew
 
 	@Override
 	public ItemStack assemble(TileEntityIndustrialBrewerController te) {
-		// TODO
 		return this.residue.copy();
 	}
 
