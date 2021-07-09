@@ -2,8 +2,9 @@ package io.github.kpzip.slimerevolution.common.tileentities;
 
 import javax.annotation.Nullable;
 
+import io.github.kpzip.slimerevolution.common.recipe.IUsesMachineRecipe;
 import io.github.kpzip.slimerevolution.common.recipe.IndustrialBrewingRecipe;
-import io.github.kpzip.slimerevolution.core.init.RecipeTypesInit;
+import io.github.kpzip.slimerevolution.core.init.RecipeTypeInit;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -22,7 +23,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 
-public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler {
+public class TileEntityIndustrialBrewerController extends LockableTileEntity implements ISidedInventory, ITickableTileEntity, IFluidHandler, IUsesMachineRecipe<IndustrialBrewingRecipe> {
 	
 	private FluidTank inTank = new FluidTank(10000); //ID 0
 	private FluidTank outTank = new FluidTank(10000); //ID 1
@@ -144,11 +145,59 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	
 	//returns null if there is no valid recipe
 	@Nullable
+	@Override
 	public IndustrialBrewingRecipe getRecipe() {
 		if (this.level == null || getItem(0).isEmpty()) {
 			return null;
 		}
-		return this.level.getRecipeManager().getRecipeFor(RecipeTypeInit.INDUSTRIAL_BREWING, p_215371_2_, p_215371_3_)
+		return this.level.getRecipeManager().getRecipeFor(RecipeTypeInit.INDUSTRIAL_BREWING, this, this.level).orElse(null);
+	}
+	
+	@Override
+	public ItemStack getWorkOutput(@Nullable IndustrialBrewingRecipe recipe) {
+		if (recipe != null) {
+			return recipe.assemble(this);
+		}
+		return ItemStack.EMPTY;
+	}
+	
+	@Override
+	public void doWork(IndustrialBrewingRecipe recipe) {
+		assert this.level != null;
+		
+		ItemStack current = getItem(1);
+		ItemStack output = getWorkOutput(recipe);
+		
+		if (!current.isEmpty()) {
+			int newcount = current.getCount() + output.getCount();
+			if (!ItemStack.matches(current, output) || newcount > output.getMaxStackSize()) {
+				stopWork();
+				return;
+			}
+			
+		}
+		
+		if (progress < recipe.getDuration()) {
+			progress ++;
+		}
+		else if (progress >= recipe.getDuration() && !this.level.isClientSide) {
+			finishWork(recipe, current, output);
+		}
+		
+	}
+	
+	@Override
+	public void stopWork() {
+		progress = 0;
+	}
+	
+	@Override
+	public void finishWork(IndustrialBrewingRecipe recipe, ItemStack current, ItemStack output) {
+		if (!current.isEmpty()) {
+			current.grow(output.getCount());
+		}
+		
+		
 	}
 
 	@Override
