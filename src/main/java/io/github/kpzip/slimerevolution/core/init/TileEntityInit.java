@@ -1,7 +1,7 @@
 package io.github.kpzip.slimerevolution.core.init;
 
-import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialBrewerController;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

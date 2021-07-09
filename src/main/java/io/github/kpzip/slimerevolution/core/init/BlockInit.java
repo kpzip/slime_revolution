@@ -1,12 +1,12 @@
 package io.github.kpzip.slimerevolution.core.init;
 
-import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.SlimeRevolution;
 import io.github.kpzip.slimerevolution.common.Shapes;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerChamber;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerController;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;

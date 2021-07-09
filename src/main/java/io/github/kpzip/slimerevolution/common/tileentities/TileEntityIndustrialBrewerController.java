@@ -2,9 +2,10 @@ package io.github.kpzip.slimerevolution.common.tileentities;
 
 import javax.annotation.Nullable;
 
-import io.github.kpzip.slimerevolution.ModVars;
+import io.github.kpzip.slimerevolution.common.container.IndustrialBrewerContainer;
 import io.github.kpzip.slimerevolution.common.recipe.IUsesMachineRecipe;
 import io.github.kpzip.slimerevolution.common.recipe.IndustrialBrewingRecipe;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import io.github.kpzip.slimerevolution.core.init.RecipeTypeInit;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.block.BlockState;

@@ -1,7 +1,7 @@
 package io.github.kpzip.slimerevolution.core.init;
 
-import io.github.kpzip.slimerevolution.ModVars;
 import io.github.kpzip.slimerevolution.SlimeRevolution;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;

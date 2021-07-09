@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.kpzip.slimerevolution.common.blocks.BlockBase;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import io.github.kpzip.slimerevolution.core.init.ContainerInit;
 import io.github.kpzip.slimerevolution.core.init.ItemInit;

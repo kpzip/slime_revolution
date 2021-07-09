@@ -1,6 +1,6 @@
 package io.github.kpzip.slimerevolution.core.init;
 
-import io.github.kpzip.slimerevolution.ModVars;
+import io.github.kpzip.slimerevolution.core.ModVars;
 import net.minecraft.util.SoundEvent;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
