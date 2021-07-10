@@ -18,7 +18,7 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		super(container, playerInv, title);
 		
 		this.imageWidth = 176;
-		this.imageHeight = 184;
+		this.imageHeight = 185;
 	}
 	
 	@Override
