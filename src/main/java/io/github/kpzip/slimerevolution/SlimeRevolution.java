@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.kpzip.slimerevolution.common.blocks.BlockBase;
+import io.github.kpzip.slimerevolution.common.screen.IndustrialBrewerScreen;
 import io.github.kpzip.slimerevolution.core.ModVars;
 import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import io.github.kpzip.slimerevolution.core.init.ContainerInit;
@@ -11,10 +12,12 @@ import io.github.kpzip.slimerevolution.core.init.ItemInit;
 import io.github.kpzip.slimerevolution.core.init.RecipeSerializerInit;
 import io.github.kpzip.slimerevolution.core.init.SoundInit;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
+import net.minecraft.client.gui.ScreenManager;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,6 +25,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
 // The value here should match an entry in the META-INF/mods.toml file
@@ -53,6 +57,23 @@ public class SlimeRevolution
 					.setRegistryName(block.getRegistryName()));
 		});
     }
+    
+    
+    
+    @Mod.EventBusSubscriber(modid = ModVars.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+    public static class ClientEvents {
+    	
+    	@SubscribeEvent
+    	public static void onClientSetup(FMLClientSetupEvent event) {
+    		ScreenManager.register(ContainerInit.INDUSTRIAL_BREWER_CONTAINER.get(), IndustrialBrewerScreen::new);
+    	}
+    	
+    }
+    
+    
+    
+    
+    
     
     public static class SlimeRevolutionGroupItems extends ItemGroup {
 
