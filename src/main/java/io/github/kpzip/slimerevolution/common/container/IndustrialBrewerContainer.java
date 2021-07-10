@@ -47,7 +47,7 @@ public class IndustrialBrewerContainer extends Container {
 		this.addSlot(new SlotMachineInput(this.inventory, 3, 98, 22, SlotType.SPLASH_SLOT));
 		this.addSlot(new SlotMachineInput(this.inventory, 4, 116, 22, SlotType.MODIFIER_SLOT));
 		this.addSlot(new SlotMachineInput(this.inventory, 5, 134, 22, SlotType.LINGERING_SLOT));
-		this.addSlot(new SlotResult(this.inventory, 6, 134, 59));
+		this.addSlot(new SlotResult(this.inventory, 6, 134, 60));
 		
 		
 		//Player Slots

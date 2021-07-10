@@ -9,5 +9,7 @@
 	"block.slimerevolution.industrial_brewer_chamber": "Industrial Brewing Chamber",
 	
 	"itemGroup.slimerevolution_tab_items": "Slime Revolution Items",
-	"itemGroup.slimerevolution_tab_machines": "Slime Revolution Machines"
+	"itemGroup.slimerevolution_tab_machines": "Slime Revolution Machines",
+	
+	"container.slimerevolution.industrial_brewer": "Industrial Brewer"
 }
