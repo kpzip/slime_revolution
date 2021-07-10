@@ -55,7 +55,7 @@ public class IndustrialBrewerContainer extends Container {
 			for (int x = 0; x < 9; x++) {
 				int index = 9 + x + y * 9;
 				int posX = 8 + x * 18;
-				int posY = 84 + y * 18;
+				int posY = 105 + y * 18;
 				this.addSlot(new Slot(playerInv, index, posX, posY));
 			}
 		}
@@ -64,7 +64,7 @@ public class IndustrialBrewerContainer extends Container {
 		for (int x = 0; x < 9; x++) {
 			int index = x;
 			int posX = 8 + x * 18;
-			int posY = 142;
+			int posY = 163;
 			this.addSlot(new Slot(playerInv, index, posX, posY));
 		}
 		
