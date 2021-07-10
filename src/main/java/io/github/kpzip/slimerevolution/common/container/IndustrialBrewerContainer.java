@@ -41,7 +41,7 @@ public class IndustrialBrewerContainer extends Container {
 		this.fields = fields;
 		
 		//Machine Slots
-		this.addSlot(new SlotMachineInput(this.inventory, 0, 41, 19, SlotType.NETHER_WART_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 0, 44, 22, SlotType.NETHER_WART_SLOT));
 		this.addSlot(new SlotMachineInput(this.inventory, 1, 74, 35, SlotType.MAIN_INGREDIENT_SLOT));
 		this.addSlot(new SlotMachineInput(this.inventory, 2, 92, 35, SlotType.INVERTER_SLOT));
 		this.addSlot(new SlotMachineInput(this.inventory, 3, 110, 35, SlotType.SPLASH_SLOT));
