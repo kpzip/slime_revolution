@@ -41,13 +41,13 @@ public class IndustrialBrewerContainer extends Container {
 		this.fields = fields;
 		
 		//Machine Slots
-		this.addSlot(new SlotMachineInput(this.inventory, 0, 44, 22, SlotType.NETHER_WART_SLOT));
-		this.addSlot(new SlotMachineInput(this.inventory, 1, 62, 22, SlotType.MAIN_INGREDIENT_SLOT));
-		this.addSlot(new SlotMachineInput(this.inventory, 2, 80, 22, SlotType.INVERTER_SLOT));
-		this.addSlot(new SlotMachineInput(this.inventory, 3, 98, 22, SlotType.SPLASH_SLOT));
-		this.addSlot(new SlotMachineInput(this.inventory, 4, 116, 22, SlotType.MODIFIER_SLOT));
-		this.addSlot(new SlotMachineInput(this.inventory, 5, 134, 22, SlotType.LINGERING_SLOT));
-		this.addSlot(new SlotResult(this.inventory, 6, 134, 60));
+		this.addSlot(new SlotMachineInput(this.inventory, 0, 44, 32, SlotType.NETHER_WART_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 1, 62, 32, SlotType.MAIN_INGREDIENT_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 2, 80, 32, SlotType.INVERTER_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 3, 98, 32, SlotType.SPLASH_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 4, 116, 32, SlotType.MODIFIER_SLOT));
+		this.addSlot(new SlotMachineInput(this.inventory, 5, 134, 32, SlotType.LINGERING_SLOT));
+		this.addSlot(new SlotResult(this.inventory, 6, 134, 70));
 		
 		
 		//Player Slots
