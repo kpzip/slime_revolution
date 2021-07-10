@@ -19,6 +19,7 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		
 		this.imageWidth = 176;
 		this.imageHeight = 187;
+		this.inventoryLabelY = this.imageHeight - 94;
 	}
 	
 	@Override
