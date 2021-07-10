@@ -111,7 +111,9 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		//IMPORTANT: Always call super method since it loads important information about the tile entity
 		super.load(state, compound);
 		
-		this.items = NonNullList.withSize(2, ItemStack.EMPTY);
+		this.items = NonNullList.withSize(7, ItemStack.EMPTY);
+		
+		
 		ItemStackHelper.loadAllItems(compound, this.items);
 		inTank.readFromNBT(compound);
 		outTank.readFromNBT(compound);
@@ -126,6 +128,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		ItemStackHelper.saveAllItems(compound, this.items);
 		inTank.writeToNBT(compound);
 		outTank.writeToNBT(compound);
+		compound.putInt("Progress", progress);
 		return new SUpdateTileEntityPacket(this.worldPosition, 1, compound);
 	}
 	
