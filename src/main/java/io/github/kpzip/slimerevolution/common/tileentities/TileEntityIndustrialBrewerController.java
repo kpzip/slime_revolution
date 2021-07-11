@@ -8,6 +8,7 @@ import io.github.kpzip.slimerevolution.common.recipe.IndustrialBrewingRecipe;
 import io.github.kpzip.slimerevolution.core.ModVars;
 import io.github.kpzip.slimerevolution.core.init.RecipeTypeInit;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
+import io.github.kpzip.slimerevolution.core.util.NBTHelper;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -109,8 +110,8 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		super.save(compound);
 		
 		ItemStackHelper.saveAllItems(compound, items);
-		inTank.writeToNBT(compound);
-		outTank.writeToNBT(compound);
+		NBTHelper.writeFluidTankToNBTWithPrefix(compound, inTank, "InTank");
+		NBTHelper.writeFluidTankToNBTWithPrefix(compound, outTank, "OutTank");
 		compound.putInt("Progress", progress);
 		
 		return compound;
@@ -125,8 +126,8 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 		
 		
 		ItemStackHelper.loadAllItems(compound, this.items);
-		inTank.readFromNBT(compound);
-		outTank.readFromNBT(compound);
+		NBTHelper.loadFluidTankFromNBTWithPrefix(compound, inTank, "InTank");
+		NBTHelper.loadFluidTankFromNBTWithPrefix(compound, outTank, "OutTank");
 		progress = compound.getInt("Progress");
 		
 	}
@@ -135,10 +136,12 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	@Nullable
 	public SUpdateTileEntityPacket getUpdatePacket() {
 		CompoundNBT compound = this.getUpdateTag();
+		
 		ItemStackHelper.saveAllItems(compound, this.items);
-		inTank.writeToNBT(compound);
-		outTank.writeToNBT(compound);
+		NBTHelper.writeFluidTankToNBTWithPrefix(compound, inTank, "InTank");
+		NBTHelper.writeFluidTankToNBTWithPrefix(compound, outTank, "OutTank");
 		compound.putInt("Progress", progress);
+		
 		return new SUpdateTileEntityPacket(this.worldPosition, 1, compound);
 	}
 	
