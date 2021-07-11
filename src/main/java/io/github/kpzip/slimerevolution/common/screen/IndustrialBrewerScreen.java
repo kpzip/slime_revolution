@@ -37,12 +37,21 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		}
 		
 		RenderSystem.color4f(1f, 1f, 1f, 1f);
-		minecraft.getTextureManager().bind(GUI_TEXTURE);
 		
 		int posX = (this.width - this.imageWidth) / 2;
 		int posY = (this.height - this.imageHeight) / 2;
 		
+		minecraft.getTextureManager().bind(GUI_TEXTURE);
+		
+		//Background
 		blit(stack, posX, posY, 0, 0, this.imageWidth, this.imageHeight);
+		
+		//Progress Arrow
+		blit(stack, posX + 79, posY + 35, 176, 14, menu.getProgressScale() + 1, 16);
+		
+		//minecraft.getTextureManager().bind(this.menu.getTe().getFluidInTank(0).getFluid().getRegistryName());
+		//Liquid
+		
 	}
 
 }

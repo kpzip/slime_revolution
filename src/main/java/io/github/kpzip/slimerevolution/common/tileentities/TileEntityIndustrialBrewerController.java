@@ -238,7 +238,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 			doWork(recipe);
 		}
 		else {
-			stopWork();
+			//stopWork();
 		}
 	}
 	

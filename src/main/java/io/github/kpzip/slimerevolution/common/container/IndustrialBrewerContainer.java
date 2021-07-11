@@ -22,7 +22,6 @@ public class IndustrialBrewerContainer extends Container {
 	
 	
 	
-	
 	//client side constructor
 	public IndustrialBrewerContainer(int id, PlayerInventory playerInv, PacketBuffer buffer) {
 		this(id, playerInv, new TileEntityIndustrialBrewerController(), new IntArray(buffer.readByte()));
@@ -78,7 +77,7 @@ public class IndustrialBrewerContainer extends Container {
 	public int getProgressScale() {
 		int progress = fields.get(0);
 		if (progress > 0) {
-			return progress * 24 / 40;
+			return progress * 113 / 40;
 		}
 		return 0;
 	}
@@ -123,6 +122,10 @@ public class IndustrialBrewerContainer extends Container {
         }
 
         return itemstack;
+	}
+	
+	public TileEntityIndustrialBrewerController getTe() {
+		return (TileEntityIndustrialBrewerController) inventory;
 	}
 
 }
