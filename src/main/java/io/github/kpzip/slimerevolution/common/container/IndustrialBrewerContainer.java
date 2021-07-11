@@ -1,5 +1,8 @@
 package io.github.kpzip.slimerevolution.common.container;
 
+import org.apache.logging.log4j.Level;
+
+import io.github.kpzip.slimerevolution.SlimeRevolution;
 import io.github.kpzip.slimerevolution.common.container.slot.SlotMachineInput;
 import io.github.kpzip.slimerevolution.common.container.slot.SlotResult;
 import io.github.kpzip.slimerevolution.common.container.slot.SlotType;
@@ -76,6 +79,7 @@ public class IndustrialBrewerContainer extends Container {
 	
 	public int getProgressScale() {
 		int progress = fields.get(0);
+		SlimeRevolution.LOGGER.log(Level.DEBUG, progress);
 		//int progress = getTe().getProgress();
 		if (progress > 0) {
 			return progress * 113 / 40;
