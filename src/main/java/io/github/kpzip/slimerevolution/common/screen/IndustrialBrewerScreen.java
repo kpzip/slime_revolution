@@ -47,7 +47,7 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		blit(stack, posX, posY, 0, 0, this.imageWidth, this.imageHeight);
 		
 		//Progress Arrow
-		blit(stack, posX + 79, posY + 50, 0, 187, menu.getProgressScale() + 1, 20);
+		blit(stack, posX + 39, posY + 49, 0, 187, menu.getProgressScale() + 1, 20);
 		
 		//minecraft.getTextureManager().bind(this.menu.getTe().getFluidInTank(0).getFluid().getRegistryName());
 		//Liquid

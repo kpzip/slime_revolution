@@ -383,5 +383,9 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	public FluidStack drain(int maxDrain, FluidAction action) {
 		return outTank.drain(maxDrain, action);
 	}
+	
+	public int getProgress() {
+		return this.progress;
+	}
 
 }
