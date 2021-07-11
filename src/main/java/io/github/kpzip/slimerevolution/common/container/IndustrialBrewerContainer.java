@@ -95,7 +95,7 @@ public class IndustrialBrewerContainer extends Container {
             final int playerInventoryEnd = inventorySize + 27;
             final int playerHotbarEnd = playerInventoryEnd + 9;
 
-            if (index == 1) {
+            if (index == 6) {
                 if (!this.moveItemStackTo(itemstack1, inventorySize, playerHotbarEnd, true)) {
                     return ItemStack.EMPTY;
                 }
