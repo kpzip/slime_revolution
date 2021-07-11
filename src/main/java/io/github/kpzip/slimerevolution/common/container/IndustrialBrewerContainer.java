@@ -101,7 +101,7 @@ public class IndustrialBrewerContainer extends Container {
                 }
 
                 slot.onQuickCraft(itemstack1, itemstack);
-            } else if (index != 0) {
+            } else if (index > 5) {
                 if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
                     return ItemStack.EMPTY;
                 }
