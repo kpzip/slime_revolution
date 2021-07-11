@@ -241,7 +241,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 			doWork(recipe);
 		}
 		else {
-			//stopWork();
+			stopWork();
 		}
 	}
 	
@@ -290,7 +290,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	
 	@Override
 	public void stopWork() {
-		progress = 0;
+		//progress = 0;
 	}
 	
 	@Override
