@@ -59,6 +59,10 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 			switch (index) {
 			case 0:
 				return progress;
+			case 1:
+				return inTank.getFluidAmount();
+			case 2:
+				return outTank.getFluidAmount();
 			default:
 				return 0;
 			}
@@ -70,6 +74,12 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 			case 0:
 				progress = value;
 				break;
+			case 1:
+				inTank.getFluid().setAmount(value);
+				break;
+			case 2:
+				outTank.getFluid().setAmount(value);
+				break;
 			default:
 				break;
 			}
@@ -78,7 +88,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 		@Override
 		public int getCount() {
-			return 1;
+			return 3;
 		}
 		
 	};
