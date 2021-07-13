@@ -9,7 +9,11 @@ import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+//All screens are client side only
+@OnlyIn(Dist.CLIENT)
 public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerContainer>{
 	
 	public static final ResourceLocation GUI_TEXTURE = new ResourceLocation(ModVars.MOD_ID, "textures/gui/industrial_brewer.png");

@@ -70,6 +70,7 @@ public class IndustrialBrewerContainer extends Container {
 			this.addSlot(new Slot(playerInv, index, posX, posY));
 		}
 		
+		//Sync Progress Bar to the client
 		this.addDataSlots(fields);
 		
 	}
