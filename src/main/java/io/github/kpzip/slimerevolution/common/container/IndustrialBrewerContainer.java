@@ -90,44 +90,8 @@ public class IndustrialBrewerContainer extends Container {
 	
 	@Override
 	public ItemStack quickMoveStack(PlayerEntity player, int index) {
-		ItemStack itemstack = ItemStack.EMPTY;
-        Slot slot = this.slots.get(index);
-        if (slot != null && slot.hasItem()) {
-            ItemStack itemstack1 = slot.getItem();
-            itemstack = itemstack1.copy();
-
-            final int inventorySize = 7;
-            final int playerInventoryEnd = inventorySize + 27;
-            final int playerHotbarEnd = playerInventoryEnd + 9;
-
-            if (index == 6) {
-                if (!this.moveItemStackTo(itemstack1, inventorySize, playerHotbarEnd, true)) {
-                    return ItemStack.EMPTY;
-                }
-
-                slot.onQuickCraft(itemstack1, itemstack);
-            } else if (index > 5) {
-                if (!this.moveItemStackTo(itemstack1, 0, 1, false)) {
-                    return ItemStack.EMPTY;
-                }
-            } else if (!this.moveItemStackTo(itemstack1, inventorySize, playerHotbarEnd, false)) {
-                return ItemStack.EMPTY;
-            }
-
-            if (itemstack1.isEmpty()) {
-                slot.set(ItemStack.EMPTY);
-            } else {
-                slot.setChanged();
-            }
-
-            if (itemstack1.getCount() == itemstack.getCount()) {
-                return ItemStack.EMPTY;
-            }
-
-            slot.onTake(player, itemstack1);
-        }
-
-        return itemstack;
+		Slot slot = this.slots.get(index);
+	    return slot != null ? slot.getItem() : ItemStack.EMPTY;
 	}
 
 }
