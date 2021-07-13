@@ -78,8 +78,7 @@ public class IndustrialBrewerContainer extends Container {
 	}
 	
 	public int getProgressScale() {
-		//int progress = fields.get(0);
-		int progress = getTe().getProgress();
+		int progress = fields.get(0);
 		SlimeRevolution.LOGGER.log(Level.DEBUG, progress);
 		if (progress > 0) {
 			return progress * 113 / 40;
@@ -127,10 +126,6 @@ public class IndustrialBrewerContainer extends Container {
         }
 
         return itemstack;
-	}
-	
-	public TileEntityIndustrialBrewerController getTe() {
-		return (TileEntityIndustrialBrewerController) inventory;
 	}
 
 }
