@@ -8,7 +8,7 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.templates.FluidTank;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public abstract class NBTHelper {
+public final class NBTHelper {
 	
 	public static CompoundNBT writeFluidTankToNBTWithPrefix(CompoundNBT nbt, FluidTank tank, String prefix) {
 		FluidStack stack = tank.getFluid();
