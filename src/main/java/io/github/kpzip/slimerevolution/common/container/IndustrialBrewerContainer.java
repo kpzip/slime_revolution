@@ -70,6 +70,8 @@ public class IndustrialBrewerContainer extends Container {
 			this.addSlot(new Slot(playerInv, index, posX, posY));
 		}
 		
+		this.addDataSlots(fields);
+		
 	}
 	
 	@Override
