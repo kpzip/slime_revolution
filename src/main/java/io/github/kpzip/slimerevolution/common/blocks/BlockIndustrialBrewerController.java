@@ -9,6 +9,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
+import net.minecraft.item.BucketItem;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
@@ -17,9 +19,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.capability.IFluidHandler.FluidAction;
 import net.minecraftforge.fml.network.NetworkHooks;
 
-public class BlockIndustrialBrewerController extends BlockMultiblockComponentRotatable {
+public class BlockIndustrialBrewerController extends BlockMultiblockComponentRotatable implements IBlockFluidContainer {
 
 	public BlockIndustrialBrewerController(Properties property) {
 		super(property);
@@ -74,9 +78,19 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponentRot
 		if (world.isClientSide()) {
 			return ActionResultType.SUCCESS;
 		}
+		Item inHand = player.getItemInHand(hand).getItem();
+		if (inHand instanceof BucketItem) {
+			addFluidFromBucket(state, world, pos, player, (BucketItem) inHand, world.getBlockEntity(pos));
+			return ActionResultType.CONSUME;
+		}
 		this.interact(world, pos, player);
 		return ActionResultType.CONSUME;
 		
+	}
+	
+	public void addFluidFromBucket(BlockState state, World world, BlockPos pos, PlayerEntity player, BucketItem inHand, TileEntity te) {
+		TileEntityIndustrialBrewerController tile = (TileEntityIndustrialBrewerController) te;
+		tile.fill(new FluidStack(inHand.getFluid(), 1000), FluidAction.EXECUTE);
 	}
 
 	private void interact(World world, BlockPos pos, PlayerEntity player) {
