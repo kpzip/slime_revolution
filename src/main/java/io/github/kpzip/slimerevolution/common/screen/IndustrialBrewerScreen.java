@@ -5,6 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 
 import io.github.kpzip.slimerevolution.common.container.IndustrialBrewerContainer;
 import io.github.kpzip.slimerevolution.core.ModVars;
+import io.github.kpzip.slimerevolution.core.util.FluidRenderUtil;
 import net.minecraft.client.gui.screen.inventory.ContainerScreen;
 import net.minecraft.entity.player.PlayerInventory;
 import net.minecraft.util.ResourceLocation;
@@ -53,9 +54,8 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		//Progress Arrow
 		blit(stack, posX + 39, posY + 49, 0, 187, menu.getProgressScale() + 1, 20);
 		
-		//minecraft.getTextureManager().bind(this.menu.getTe().getFluidInTank(0).getFluid().getRegistryName());
 		//Liquid
-		
+		FluidRenderUtil.renderGuiTank(menu.getInputFluid(), 10000, posX, posY, 0, 12, 50);
 	}
 
 }
