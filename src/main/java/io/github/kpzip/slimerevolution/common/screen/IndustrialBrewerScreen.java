@@ -52,7 +52,7 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		blit(stack, posX, posY, 0, 0, this.imageWidth, this.imageHeight);
 		
 		//Progress Arrow
-		blit(stack, posX + 39, posY + 49, 0, 187, menu.getProgressScale() + 1, 20);
+		blit(stack, posX + 39, posY + 49, 0, 187, menu.getProgressScale(), 20);
 		
 		//Liquid
 		FluidRenderUtil.renderGuiTank(menu.getInputFluid(), 10000, posX + 23, posY + 18, 0, 15, 70);
