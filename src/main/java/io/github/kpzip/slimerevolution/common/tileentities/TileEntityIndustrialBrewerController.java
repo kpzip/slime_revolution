@@ -24,6 +24,7 @@ import net.minecraft.tileentity.LockableTileEntity;
 import net.minecraft.util.Direction;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.NonNullList;
+import net.minecraft.util.registry.Registry;
 import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraftforge.common.capabilities.Capability;
@@ -55,6 +56,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 	
 	private final IIntArray fields = new IIntArray() {
 
+		@SuppressWarnings("deprecation")
 		@Override
 		public int get(int index) {
 			switch (index) {
@@ -63,7 +65,11 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 			case 1:
 				return inTank.getFluidAmount();
 			case 2:
+				return Registry.FLUID.getId(inTank.getFluid().getFluid());
+			case 3:
 				return outTank.getFluidAmount();
+			case 4:
+				return Registry.FLUID.getId(outTank.getFluid().getFluid());
 			default:
 				return 0;
 			}
@@ -79,7 +85,13 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 				inTank.getFluid().setAmount(value);
 				break;
 			case 2:
+				//unable to set fluid types with this method
+				break;
+			case 3:
 				outTank.getFluid().setAmount(value);
+				break;
+			case 4:
+				//unable to set fluid types with this method
 				break;
 			default:
 				break;

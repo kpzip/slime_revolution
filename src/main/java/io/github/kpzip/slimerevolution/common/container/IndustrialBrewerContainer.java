@@ -7,6 +7,7 @@ import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialB
 import io.github.kpzip.slimerevolution.core.init.ContainerInit;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
+import net.minecraft.fluid.Fluid;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.container.Container;
 import net.minecraft.inventory.container.Slot;
@@ -14,6 +15,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.IIntArray;
 import net.minecraft.util.IntArray;
+import net.minecraft.util.registry.Registry;
+import net.minecraftforge.fluids.FluidStack;
 
 public class IndustrialBrewerContainer extends Container {
 	
@@ -83,6 +86,18 @@ public class IndustrialBrewerContainer extends Container {
 			return progress * 113 / 40;
 		}
 		return 0;
+	}
+	
+	@SuppressWarnings("deprecation")
+	public FluidStack getInputFluid() {
+		Fluid fluid = Registry.FLUID.byId(this.fields.get(2));
+		return new FluidStack(fluid, this.fields.get(1));
+	}
+	
+	@SuppressWarnings("deprecation")
+	public FluidStack getOutputFluid() {
+		Fluid fluid = Registry.FLUID.byId(this.fields.get(4));
+		return new FluidStack(fluid, this.fields.get(3));
 	}
 	
 	@Override
