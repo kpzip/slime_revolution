@@ -7,11 +7,15 @@ import io.github.kpzip.slimerevolution.core.init.BlockInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
+import net.minecraft.fluid.Fluid;
+import net.minecraft.fluid.Fluids;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.item.BucketItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
@@ -80,17 +84,29 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponentRot
 		}
 		Item inHand = player.getItemInHand(hand).getItem();
 		if (inHand instanceof BucketItem) {
-			addFluidFromBucket(state, world, pos, player, (BucketItem) inHand, world.getBlockEntity(pos));
-			return ActionResultType.CONSUME;
+			return addFluidFromBucket(state, world, pos, player, (BucketItem) inHand, world.getBlockEntity(pos), hand);
 		}
 		this.interact(world, pos, player);
 		return ActionResultType.CONSUME;
 		
 	}
 	
-	public void addFluidFromBucket(BlockState state, World world, BlockPos pos, PlayerEntity player, BucketItem inHand, TileEntity te) {
+	public ActionResultType addFluidFromBucket(BlockState state, World world, BlockPos pos, PlayerEntity player, BucketItem inHand, TileEntity te, Hand hand) {
 		TileEntityIndustrialBrewerController tile = (TileEntityIndustrialBrewerController) te;
-		tile.fill(new FluidStack(inHand.getFluid(), 1000), FluidAction.EXECUTE);
+		if (tile.getFluidInTank(0).getAmount() <= tile.getTankCapacity(0) - 1000 && tile.getFluidInTank(0).getFluid() == inHand.getFluid() && inHand.getFluid() != Fluids.EMPTY) {
+			tile.fill(new FluidStack(inHand.getFluid(), 1000), FluidAction.EXECUTE);
+			player.setItemInHand(hand, new ItemStack(Items.BUCKET, 1));
+			return ActionResultType.CONSUME;
+		}
+		else if(inHand.getFluid() == Fluids.EMPTY && tile.getFluidInTank(1).getAmount() >= 1000 && tile.getFluidInTank(1).getFluid() != Fluids.EMPTY) {
+			Fluid toRemoveType = tile.getFluidInTank(1).getFluid();
+			tile.drain(new FluidStack(toRemoveType, 1000), FluidAction.EXECUTE);
+			player.setItemInHand(hand, new ItemStack(toRemoveType.getBucket()));
+			return ActionResultType.CONSUME;
+		}
+		return ActionResultType.FAIL;
+		
+		
 	}
 
 	private void interact(World world, BlockPos pos, PlayerEntity player) {
