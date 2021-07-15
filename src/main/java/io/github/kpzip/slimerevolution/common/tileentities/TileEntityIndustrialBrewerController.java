@@ -101,7 +101,7 @@ public class TileEntityIndustrialBrewerController extends LockableTileEntity imp
 
 		@Override
 		public int getCount() {
-			return 3;
+			return 4;
 		}
 		
 	};
