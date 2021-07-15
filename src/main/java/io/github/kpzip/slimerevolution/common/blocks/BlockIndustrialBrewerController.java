@@ -84,6 +84,7 @@ public class BlockIndustrialBrewerController extends BlockMultiblockComponentRot
 		}
 		Item inHand = player.getItemInHand(hand).getItem();
 		if (inHand instanceof BucketItem) {
+			((TileEntityIndustrialBrewerController)world.getBlockEntity(pos)).fill(new FluidStack(((BucketItem)inHand).getFluid(), 1000), FluidAction.EXECUTE);
 			return addFluidFromBucket(state, world, pos, player, (BucketItem) inHand, world.getBlockEntity(pos), hand);
 		}
 		this.interact(world, pos, player);
