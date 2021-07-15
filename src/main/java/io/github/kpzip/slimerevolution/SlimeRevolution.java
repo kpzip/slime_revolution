@@ -36,6 +36,7 @@ public class SlimeRevolution
     public static final Logger LOGGER = LogManager.getLogger();
     public static final ItemGroup SLIME_REVOLUTION_GROUP_ITEMS = new SlimeRevolutionGroupItems("slimerevolution_tab_items");
     public static final ItemGroup SLIME_REVOLUTION_GROUP_MACHINES = new SlimeRevolutionGroupMachines("slimerevolution_tab_machines");
+    public static final ItemGroup SLIME_REVOLUTION_GROUP_CABLES = new SlimeRevolutionGroupMachines("slimerevolution_tab_cables");
 
     public SlimeRevolution() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
@@ -97,6 +98,19 @@ public class SlimeRevolution
 		@Override
 		public ItemStack makeIcon() {
 			return Item.byBlock(BlockInit.INDUSTRIAL_BREWER_CONTROLLER.get()).getDefaultInstance();
+		}
+    }
+    
+    public static class SlimeRevolutionGroupCables extends ItemGroup {
+
+		public SlimeRevolutionGroupCables(String label) {
+			super(label);
+		}
+
+		@SuppressWarnings("deprecation")
+		@Override
+		public ItemStack makeIcon() {
+			return Item.byBlock(BlockInit.ENERGY_CABLE.get()).getDefaultInstance();
 		}
     }
 }

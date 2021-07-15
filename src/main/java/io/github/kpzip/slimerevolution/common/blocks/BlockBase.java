@@ -26,6 +26,8 @@ public class BlockBase extends Block {
 		return this;
 	}
 	
+	public boolean getHasItem() {
+		return hasItem;
+	}
 	
-
 }

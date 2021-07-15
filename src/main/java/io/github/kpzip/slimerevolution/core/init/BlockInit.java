@@ -2,6 +2,7 @@ package io.github.kpzip.slimerevolution.core.init;
 
 import io.github.kpzip.slimerevolution.SlimeRevolution;
 import io.github.kpzip.slimerevolution.common.Shapes;
+import io.github.kpzip.slimerevolution.common.blocks.BlockEnergyCable;
 import io.github.kpzip.slimerevolution.common.blocks.BlockHorizontal;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerChamber;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
@@ -53,6 +54,16 @@ public class BlockInit {
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	public static final RegistryObject<BlockIndustrialBrewerChamber> INDUSTRIAL_BREWER_CHAMBER = BLOCKS.register("industrial_brewer_chamber",
 			() -> new BlockIndustrialBrewerChamber(AbstractBlock.Properties
+						.of(Material.METAL, MaterialColor.COLOR_GRAY)
+						.harvestLevel(2)
+						.harvestTool(ToolType.PICKAXE)
+						.strength(3.0f)
+						.sound(SoundType.METAL)
+						.isValidSpawn((state, block, reader, type) -> false)
+						.isRedstoneConductor((state, reader, pos) -> true)
+					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
+	public static final RegistryObject<BlockEnergyCable> ENERGY_CABLE = BLOCKS.register("industrial_brewer_chamber",
+			() -> new BlockEnergyCable(AbstractBlock.Properties
 						.of(Material.METAL, MaterialColor.COLOR_GRAY)
 						.harvestLevel(2)
 						.harvestTool(ToolType.PICKAXE)
