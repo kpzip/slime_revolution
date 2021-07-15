@@ -56,7 +56,7 @@ public class IndustrialBrewerScreen extends ContainerScreen<IndustrialBrewerCont
 		
 		//Liquid
 		FluidRenderUtil.renderGuiTank(menu.getInputFluid(), 10000, posX + 23, posY + 18, 0, 15, 70);
-		//FluidRenderUtil.renderGuiTank(menu.getOutputFluid(), 10000, posX + 153, posY + 18, 0, 15, 70);
+		FluidRenderUtil.renderGuiTank(menu.getOutputFluid(), 10000, posX + 153, posY + 18, 0, 15, 70);
 	}
 
 }
