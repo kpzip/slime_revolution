@@ -10,6 +10,10 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public final class NBTHelper {
 	
+	private NBTHelper() {
+        throw new IllegalAccessError("Class only uses static methods");
+    }
+	
 	public static CompoundNBT writeFluidTankToNBTWithPrefix(CompoundNBT nbt, FluidTank tank, String prefix) {
 		FluidStack stack = tank.getFluid();
 		nbt.putString(prefix + "FluidName", stack.getFluid().getRegistryName().toString());
