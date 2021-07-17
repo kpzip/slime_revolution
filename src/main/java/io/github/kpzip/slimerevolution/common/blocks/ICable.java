@@ -5,6 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 public interface ICable {
 	
@@ -18,5 +20,7 @@ public interface ICable {
 	public void createBlockStateDefinition(Builder<Block, BlockState> builder);
 	
 	public BlockState getStateForPlacement(BlockItemUseContext context);
+	
+	public void refreshConnections(BlockState state, World world, BlockPos pos);
 
 }

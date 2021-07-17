@@ -1,10 +1,16 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
+import io.github.kpzip.slimerevolution.common.energy.IRealisticEnergyHandler;
+import io.github.kpzip.slimerevolution.common.tileentities.TileEntityEnergyCable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.state.StateContainer.Builder;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockReader;
+import net.minecraft.world.World;
 
 public class BlockEnergyCable extends BlockBase implements ICable {
 	
@@ -36,6 +42,60 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 		return super.getStateForPlacement(context);
 	}
 	
+	@Override
+	public void neighborChanged(BlockState state, World world, BlockPos pos, Block block, BlockPos pos2, boolean isMoving) {
+		refreshConnections(state, world, pos);
+	}
+	
+	@Override
+	public void refreshConnections(BlockState state, World world, BlockPos pos) {
+		if (world.getBlockEntity(pos.north()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_NORTH, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_NORTH, false));
+		}
+		if (world.getBlockEntity(pos.east()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_EAST, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_EAST, false));
+		}
+		if (world.getBlockEntity(pos.south()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_SOUTH, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_SOUTH, false));
+		}
+		if (world.getBlockEntity(pos.west()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_WEST, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_WEST, false));
+		}
+		if (world.getBlockEntity(pos.above()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_UP, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_UP, false));
+		}
+		if (world.getBlockEntity(pos.below()) instanceof IRealisticEnergyHandler) {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_DOWN, true));
+		}
+		else {
+			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_DOWN, false));
+		}
+	}
+	
+	@Override
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return new TileEntityEnergyCable();
+	}
 
 	
 	//Overriding these methods so the deferred register doesn't have a tantrum

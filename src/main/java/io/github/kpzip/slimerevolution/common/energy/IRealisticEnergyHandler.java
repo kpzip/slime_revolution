@@ -8,11 +8,11 @@ public interface IRealisticEnergyHandler {
 	
 	public int getFrequency();
 	
-	public void addAmps();
+	public void addAmps(int ammount);
 	
-	public boolean setVolts();
+	public boolean setVolts(int volts);
 	
-	public void removeAmps();
+	public void removeAmps(int ammount);
 	
 	
 	

@@ -1,5 +1,6 @@
 package io.github.kpzip.slimerevolution.core.init;
 
+import io.github.kpzip.slimerevolution.common.tileentities.TileEntityEnergyCable;
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityIndustrialBrewerController;
 import io.github.kpzip.slimerevolution.core.ModVars;
 import net.minecraft.tileentity.TileEntityType;
@@ -16,6 +17,11 @@ public class TileEntityInit {
 			{ return TileEntityType.Builder.of(
 					TileEntityIndustrialBrewerController::new, 
 					BlockInit.INDUSTRIAL_BREWER_CONTROLLER.get()).build(null); });
+	public static final RegistryObject<TileEntityType<TileEntityEnergyCable>> ENERGY_CABLE_TILE_ENTITY_TYPE = TILE_ENTITIES.register(
+			"energy_cable_tile_entity_type", () -> 
+			{ return TileEntityType.Builder.of(
+					TileEntityEnergyCable::new, 
+					BlockInit.ENERGY_CABLE.get()).build(null); });
 	
 
 }
