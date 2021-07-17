@@ -2,17 +2,15 @@ package io.github.kpzip.slimerevolution.common.energy;
 
 public interface IRealisticEnergyHandler {
 	
-	public int getAmps();
+	public int getStoredEnergy();
 	
-	public int getVolts();
+	public void sendEnergyToNeighbors();
 	
-	public int getFrequency();
+	public boolean useEnergy(int ammount, EnergyAction action);
 	
-	public void addAmps(int ammount);
+	public boolean addEnergy(int ammount, EnergyAction action);
 	
-	public boolean setVolts(int volts);
-	
-	public void removeAmps(int ammount);
+	public EnergyHandlerType getEnergyType();
 	
 	
 	
