@@ -1,6 +1,6 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
-import io.github.kpzip.slimerevolution.common.energy.IRealisticEnergyHandler;
+import io.github.kpzip.slimerevolution.common.energy.ISlimeEnergyHandler;
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityEnergyCable;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -49,37 +49,37 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 	
 	@Override
 	public void refreshConnections(BlockState state, World world, BlockPos pos) {
-		if (world.getBlockEntity(pos.north()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.north()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_NORTH, true));
 		}
 		else {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_NORTH, false));
 		}
-		if (world.getBlockEntity(pos.east()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.east()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_EAST, true));
 		}
 		else {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_EAST, false));
 		}
-		if (world.getBlockEntity(pos.south()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.south()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_SOUTH, true));
 		}
 		else {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_SOUTH, false));
 		}
-		if (world.getBlockEntity(pos.west()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.west()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_WEST, true));
 		}
 		else {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_WEST, false));
 		}
-		if (world.getBlockEntity(pos.above()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.above()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_UP, true));
 		}
 		else {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_UP, false));
 		}
-		if (world.getBlockEntity(pos.below()) instanceof IRealisticEnergyHandler) {
+		if (world.getBlockEntity(pos.below()) instanceof ISlimeEnergyHandler) {
 			world.setBlockAndUpdate(pos, world.getBlockState(pos).setValue(HAS_DOWN, true));
 		}
 		else {

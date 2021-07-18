@@ -4,7 +4,8 @@ import javax.annotation.Nullable;
 
 import io.github.kpzip.slimerevolution.common.energy.EnergyAction;
 import io.github.kpzip.slimerevolution.common.energy.EnergyHandlerType;
-import io.github.kpzip.slimerevolution.common.energy.IRealisticEnergyHandler;
+import io.github.kpzip.slimerevolution.common.energy.IEnergyTransmitter;
+import io.github.kpzip.slimerevolution.common.energy.ISlimeEnergyHandler;
 import io.github.kpzip.slimerevolution.core.init.TileEntityInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.texture.ITickable;
@@ -12,7 +13,7 @@ import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityEnergyCable extends TileEntity implements IRealisticEnergyHandler, ITickable {
+public class TileEntityEnergyCable extends TileEntity implements IEnergyTransmitter, ITickable, ISlimeEnergyHandler {
 	
 	public static int MAX_ENERGY = 100000;
 	public static int TRANSFER_RATE = 1000;
@@ -86,6 +87,16 @@ public class TileEntityEnergyCable extends TileEntity implements IRealisticEnerg
 	@Override
 	public void tick() {
 		sendEnergyToNeighbors();
+	}
+
+	@Override
+	public int getCapacity() {
+		return MAX_ENERGY;
+	}
+
+	@Override
+	public int getMaximumTransferRate() {
+		return TRANSFER_RATE;
 	}
 
 	
