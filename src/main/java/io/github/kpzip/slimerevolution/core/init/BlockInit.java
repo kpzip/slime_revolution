@@ -8,6 +8,7 @@ import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerChambe
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerColumn;
 import io.github.kpzip.slimerevolution.common.blocks.BlockIndustrialBrewerController;
 import io.github.kpzip.slimerevolution.core.ModVars;
+import io.github.kpzip.slimerevolution.core.util.BlockAttributeHelper;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
@@ -28,7 +29,7 @@ public class BlockInit {
 						.harvestLevel(-1)
 						.instabreak()
 						.sound(SoundType.SLIME_BLOCK)
-						.isRedstoneConductor((state, reader, pos) -> false)
+						.isRedstoneConductor(BlockAttributeHelper::never)
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_ITEMS));
 	public static final RegistryObject<BlockIndustrialBrewerController> INDUSTRIAL_BREWER_CONTROLLER = BLOCKS.register("industrial_brewer_controller",
 			() -> new BlockIndustrialBrewerController(AbstractBlock.Properties
@@ -37,8 +38,8 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.strength(3.0f)
 						.sound(SoundType.METAL)
-						.isValidSpawn((state, block, reader, type) -> false)
-						.isRedstoneConductor((state, reader, pos) -> true)
+						.isValidSpawn(BlockAttributeHelper::never)
+						.isRedstoneConductor(BlockAttributeHelper::always)
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	public static final RegistryObject<BlockIndustrialBrewerColumn> INDUSTRIAL_BREWER_COLUMN = BLOCKS.register("industrial_brewer_column",
 			() -> new BlockIndustrialBrewerColumn(AbstractBlock.Properties
@@ -47,9 +48,9 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.strength(3.0f)
 						.sound(SoundType.METAL)
-						.isValidSpawn((state, block, reader, type) -> false)
-						.isSuffocating((state, reader, pos) -> false)
-						.isRedstoneConductor((state, reader, pos) -> false),
+						.isValidSpawn(BlockAttributeHelper::never)
+						.isSuffocating(BlockAttributeHelper::never)
+						.isRedstoneConductor(BlockAttributeHelper::never),
 						Shapes.SHAPE_BREWING_COLUMN
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	public static final RegistryObject<BlockIndustrialBrewerChamber> INDUSTRIAL_BREWER_CHAMBER = BLOCKS.register("industrial_brewer_chamber",
@@ -59,8 +60,8 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.strength(3.0f)
 						.sound(SoundType.METAL)
-						.isValidSpawn((state, block, reader, type) -> false)
-						.isRedstoneConductor((state, reader, pos) -> true)
+						.isValidSpawn(BlockAttributeHelper::never)
+						.isRedstoneConductor(BlockAttributeHelper::always)
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	public static final RegistryObject<BlockEnergyCable> ENERGY_CABLE = BLOCKS.register("industrial_brewer_chamber",
 			() -> new BlockEnergyCable(AbstractBlock.Properties
@@ -69,8 +70,8 @@ public class BlockInit {
 						.harvestTool(ToolType.PICKAXE)
 						.strength(3.0f)
 						.sound(SoundType.METAL)
-						.isValidSpawn((state, block, reader, type) -> false)
-						.isRedstoneConductor((state, reader, pos) -> true)
+						.isValidSpawn(BlockAttributeHelper::never)
+						.isRedstoneConductor(BlockAttributeHelper::always)
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
 	
 }

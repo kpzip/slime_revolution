@@ -12,7 +12,9 @@ public interface ISlimeEnergyHandler {
 	
 	public int getCapacity();
 	
-	public int getMaximumTransferRate();
+	public int getInputTransferRate();
+	
+	public int getOutputTransferRate();
 	
 	
 	

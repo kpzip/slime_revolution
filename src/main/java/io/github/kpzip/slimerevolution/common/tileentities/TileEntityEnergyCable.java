@@ -95,7 +95,12 @@ public class TileEntityEnergyCable extends TileEntity implements IEnergyTransmit
 	}
 
 	@Override
-	public int getMaximumTransferRate() {
+	public int getInputTransferRate() {
+		return TRANSFER_RATE;
+	}
+
+	@Override
+	public int getOutputTransferRate() {
 		return TRANSFER_RATE;
 	}
 
