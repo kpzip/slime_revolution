@@ -63,7 +63,7 @@ public class BlockInit {
 						.isValidSpawn(BlockAttributeHelper::never)
 						.isRedstoneConductor(BlockAttributeHelper::always)
 					).tab(SlimeRevolution.SLIME_REVOLUTION_GROUP_MACHINES));
-	public static final RegistryObject<BlockEnergyCable> ENERGY_CABLE = BLOCKS.register("industrial_brewer_chamber",
+	public static final RegistryObject<BlockEnergyCable> ENERGY_CABLE = BLOCKS.register("energy_cable",
 			() -> new BlockEnergyCable(AbstractBlock.Properties
 						.of(Material.METAL, MaterialColor.COLOR_GRAY)
 						.harvestLevel(2)
