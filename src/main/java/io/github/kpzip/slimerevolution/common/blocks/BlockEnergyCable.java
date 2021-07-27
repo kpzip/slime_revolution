@@ -1,5 +1,6 @@
 package io.github.kpzip.slimerevolution.common.blocks;
 
+import io.github.kpzip.slimerevolution.common.Shapes;
 import io.github.kpzip.slimerevolution.common.energy.ISlimeEnergyHandler;
 import io.github.kpzip.slimerevolution.common.tileentities.TileEntityEnergyCable;
 import net.minecraft.block.Block;
@@ -9,6 +10,8 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.state.StateContainer.Builder;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -109,6 +112,11 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 	public BlockEnergyCable setHasItem(boolean b) {
 		this.hasItem = b;
 		return this;
+	}
+	
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+		return Shapes.SHAPE_CABLE_CENTER;
 	}
 
 }
