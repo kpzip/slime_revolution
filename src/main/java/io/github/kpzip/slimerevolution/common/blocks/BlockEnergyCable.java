@@ -103,7 +103,7 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 	
 	@Override
 	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return Shapes.SHAPE_CABLE_CENTER;
+		return Shapes.getShapeForCable(state.getValue(HAS_NORTH), state.getValue(HAS_EAST), state.getValue(HAS_SOUTH), state.getValue(HAS_WEST), state.getValue(HAS_UP), state.getValue(HAS_DOWN));
 	}
 
 	
