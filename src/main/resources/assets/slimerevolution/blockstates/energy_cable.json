@@ -7,7 +7,7 @@
     },
     {
       "when": {
-        "north": "true"
+        "has_north": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
@@ -17,7 +17,7 @@
     },
     {
       "when": {
-        "east": "true"
+        "has_east": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
@@ -27,7 +27,7 @@
     },
     {
       "when": {
-        "south": "true"
+        "has_south": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
@@ -37,7 +37,7 @@
     },
     {
       "when": {
-        "west": "true"
+        "has_west": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
@@ -47,7 +47,7 @@
     },
     {
       "when": {
-        "down": "true"
+        "has_down": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
@@ -57,7 +57,7 @@
     },
     {
       "when": {
-        "up": "true"
+        "has_up": "true"
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
