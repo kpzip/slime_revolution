@@ -11,7 +11,7 @@
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
-        "z" : 270,
+        "x" : 270,
         "uvlock": true
       }
     },
@@ -21,7 +21,7 @@
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
-        "x": 270,
+        "z": 270,
         "uvlock": true
       }
     },
@@ -31,7 +31,7 @@
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
-        "z": 90,
+        "x": 90,
         "uvlock": true
       }
     },
@@ -41,7 +41,7 @@
       },
       "apply": {
         "model": "slimerevolution:block/energy_cable_outcrop_slime",
-        "x": 90,
+        "z": 90,
         "uvlock": true
       }
     },
