@@ -99,6 +99,12 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
 		return new TileEntityEnergyCable();
 	}
+	
+	
+	@Override
+	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
+		return Shapes.SHAPE_CABLE_CENTER;
+	}
 
 	
 	//Overriding these methods so the deferred register doesn't have a tantrum
@@ -113,10 +119,6 @@ public class BlockEnergyCable extends BlockBase implements ICable {
 		this.hasItem = b;
 		return this;
 	}
-	
-	@Override
-	public VoxelShape getShape(BlockState state, IBlockReader reader, BlockPos pos, ISelectionContext context) {
-		return Shapes.SHAPE_CABLE_CENTER;
-	}
+
 
 }
